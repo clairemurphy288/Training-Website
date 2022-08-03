@@ -66,8 +66,11 @@ listItems = subList.map((question, index) =>  <Form setQuestions = {props.setQue
 return (
   <div>
     <div>{listItems}</div>
-    <i onClick={decrementPage} class="fa-solid fa-arrow-left-long"></i>
-  <i onClick={incrementPage} class="fa-solid fa-arrow-right-long"></i>
+    <div className= "mb-3 px-3 d-flex justify-content-between">
+      <i onClick={decrementPage} class="fa-solid fa-arrow-left-long fa-xl arrow-icon"></i>
+      <i onClick={incrementPage} class="fa-solid fa-arrow-right-long fa-xl arrow-icon"></i>
+    </div>
+
   </div>
 )
 
@@ -108,10 +111,12 @@ export default function Edit (props) {
       return(
       <div>
         <NavBar/>
-        <h1>{quiz[0].name}</h1>
-        <Query setQuestions = {setQuestions}quizId ={quiz[0]._id} setSearch = {setSearch} search={search}/>
-         {blankQuestion}
-          <i onClick={addQuestion} class="fa-solid fa-plus"></i>
+        <div className='container'>
+          <h1>{quiz[0].name}</h1>
+          <Query setQuestions = {setQuestions}quizId ={quiz[0]._id} setSearch = {setSearch} search={search}/>
+          {blankQuestion}
+        </div>
+          <hr></hr>
           <Questions setQuestions = {setQuestions} search = {search} searchedQuestions = {searchedQuestions} setQuiz={setQuiz} quiz = {quiz}/>
       </div>)
       

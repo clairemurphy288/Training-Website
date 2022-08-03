@@ -39,26 +39,27 @@ export default function AddQuestion(props) {
     let answerList = answers.map((val,index) => <Answer setSelectedAnswer={setSelectedAnswer} selectedAnswer={selectedAnswer} name={index} onChange={onChange}/>);
     console.log(answerList);
     return(
-    <div>
+    <div className='container'>
+          <i onClick={onClick} className="fa-solid fa-trash questionDeletion"></i>
         <h1>Add Question</h1>
         <form onSubmit={onSubmit}>
-             <textarea onChange={setQuestion} cols="50" rows="10"></textarea>
-  <i onClick={onClick} className="fa-solid fa-trash-can questionDeletion"></i>
+            <div className='mb-3'>
+                <textarea className='form-control' onChange={setQuestion} ></textarea>
+            </div>
         <h6>Select the correct answer: </h6>
     <div>{answerList}</div>
-    <button type="submit">Add</button>
-    <hr></hr>
+    <button className='btn btn-dark' type="submit">Add</button>
     </form>
-    </div>)
-}
+    </div>
+)}
 
 function Answer(props) {
-    const [style, setStyle] = useState("")
+    const [style, setStyle] = useState("form-control ")
     const [clicked, setClick] = useState(false);
     function setCorrectAnswer() {
         
         if (props.selectedAnswer === props.name) {
-            setStyle("");
+            setStyle("form-control ");
             setClick(true);
             props.setSelectedAnswer(-1);
             //remove class
@@ -66,17 +67,23 @@ function Answer(props) {
         } else if(props.selectedAnswer === -1) {
             setClick(true);
             props.setSelectedAnswer(props.name);
-            setStyle("select");
+            setStyle("form-control select");
 
         }
     }
-
+console.log(props.selectedAnswer)
     useEffect(() => {
         if (props.selectedAnswer === props.index  && !clicked) {
             setStyle(style + "select");
         } 
 
     },[props.selectedAnswer])
-    return(<input className={style} name={props.name} onClick={setCorrectAnswer} onChange={props.onChange} type="text"></input>)
+    return(
+    <div className="mb-1 row">
+        <div className="col-lg-6">
+            <input className={style} name={props.name} onClick={setCorrectAnswer} onChange={props.onChange} type="text"></input>
+        </div>
+    </div>
+)
 
 }

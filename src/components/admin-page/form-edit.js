@@ -35,19 +35,16 @@ export default function Form(props) {
     }
     const answerItems = props.answerChoices.map((answer,index) => (<Answer selectedAnswer={selectedAnswer} setAnswer={setAnswer} setData={setData} data={data} onChange = {onChange} answerChoices={props.answerChoices} index={index} answer={answer}/>))
     return (
-<div className="container">
+<div className="container my-5">
 <i onClick={onClick}className="fa-solid fa-trash questionDeletion"></i>
 <div className="">
   <form onSubmit={onSubmit}>
   <div class="mb-3">
   <textarea className="form-control" ref={input} onChange={onChange}  defaultValue = {props.question}></textarea>
 </div>
-  
-  
-        <h6>Select the correct answer: </h6>
+    <h6>Select the correct answer: </h6>
     <div>{answerItems}</div>
     <button className= "btn btn-dark"type="submit">Submit Changes</button>
-    <hr></hr>
     </form>
 </div>
 </div>
@@ -108,7 +105,7 @@ function Answer(props) {
     },[props.selectedAnswer])
 
     return (
-            <div className="mb-3 row">
+            <div className="mb-2 row">
                 <div className="col-lg-6">
                 <input className = {style} onClick={onClick} onChange={onChange} ref={textInput} type = "text" defaultValue={props.answer}></input>
                 </div>
