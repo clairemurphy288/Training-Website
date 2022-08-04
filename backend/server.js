@@ -30,6 +30,9 @@ const userRouter = require(__dirname + '/routes/users');
 app.use('/', userRouter);
 ////
 
+const quizRouter = require(__dirname + '/routes/quizzes');
+app.use('/', quizRouter);
+
 const adminRouter = require(__dirname + '/routes/admin');
 app.use('/', adminRouter);
 

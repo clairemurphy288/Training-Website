@@ -1,0 +1,81 @@
+/* body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ededed;
+    box-sizing: border-box;
+    color: black;
+    text-align: center;
+} */
+
+/* * {
+    box-sizing: border-box;
+    color: #333;
+} */
+
+/* .form-control, #ls-btn {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ls-heading {
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+  }
+
+.form-label {
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 2px solid rgba(0,0,0,1);
+    text-align: center;
+}
+
+.form-control:focus {
+    border-bottom: 2px solid rgba(2,132,130,1);
+}
+
+.btn-sub {
+    margin-top: 40px;
+    margin: 25px auto 0;
+    margin-bottom: 20px;
+    background: #028482;
+    text-transform: uppercase;
+    display: block;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.container {
+    padding: 1em;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.holder {
+    border-radius: 15px;
+    background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 130%;
+} */

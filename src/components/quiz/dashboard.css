@@ -1,0 +1,37 @@
+/* body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ededed;
+    margin: 0em;
+    box-sizing: border-box;
+    color: black;
+} */
+
+/* * {
+    box-sizing: border-box;
+    color: black;
+} */
+
+.jumbo {
+    margin-top: -4.5em;
+    width: auto;
+    height: 60%;
+    background-color: #028482;
+    text-align: center;
+}
+
+.jumbo h1 {
+    color: #fff;
+    font-size: 64px;
+}
+
+.quiz-card {
+    background-color: aqua;
+    width: 250px;
+    height: 250px;
+}
+
+.score-card {
+    background-color: red;
+    width: 250px;
+    height: 250px;
+}
