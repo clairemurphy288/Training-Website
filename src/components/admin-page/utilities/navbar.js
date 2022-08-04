@@ -15,13 +15,13 @@ export default function NavBar(props) {
             Users
           </Link>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Standard View</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
           {/* <li class="nav-item">
-            <a class="nav-link" href="#">Quiz Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Create</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li> */}
         </ul>
