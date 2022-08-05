@@ -36,6 +36,11 @@ export default function AddQuestion(props) {
 
            }).catch(err => console.log(err));
         props.getResponse();
+        props.setBlankQuestion(<div className="add-user-container">
+        <h1>Question Added!</h1>
+        <h5 className="circle-label">Add a new question</h5>
+        <i onClick={props.addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
+    </div>);
     }
     let answerList = answers.map((val,index) => <Answer setSelectedAnswer={setSelectedAnswer} selectedAnswer={selectedAnswer} name={index} onChange={onChange}/>);
     console.log(answerList);

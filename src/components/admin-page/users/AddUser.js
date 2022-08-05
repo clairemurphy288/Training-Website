@@ -29,7 +29,8 @@ export default function AddUser(props) {
             console.log(res.data);
         } ).catch(err => console.log(err));
         props.getUsers();
-        props.setBlankUser(<h1>User Added!</h1>)
+        props.setBlankUser(<div className="add-user-container"><h1>User Added!</h1><h5 className="circle-label">Add a new user</h5>
+        <i onClick={props.onClick} class="fa-solid fa-circle-plus fa-xl"></i></div>)
 
     }
     return(

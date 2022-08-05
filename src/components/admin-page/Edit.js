@@ -10,18 +10,10 @@ import AddQuestion from './AddQuestion';
 import NavBar from "./utilities/navbar";
 
 export function Questions (props) {
-  const [count, setCount] = useState(0);
-  const [range, setRange] = useState(count,count + 10);
-  const [list, setList] = useState( props.quiz[0].questions)
-    useEffect(() => {
-      if(props.search === "" ) {
-        setList(props.quiz[0].questions)
-      } 
-    },[props.quiz]);
      useEffect(() => {
       if(props.search === "" ) {
         props.setQuestions([])
-        setList(props.quiz[0].questions);
+        props.setList(props.quiz[0].questions);
       } 
     },[props.search]);
     useEffect(() => {
@@ -30,34 +22,13 @@ export function Questions (props) {
         for(let i =0; i < props.searchedQuestions.length; i++) {
           questions.push(props.searchedQuestions[i].questions);
         }
-        setList(questions);
+        props.setList(questions);
       } 
 
     },[props.searchedQuestions])
 
-  // let list = props.quiz[0].questions; 
-      const numberOfPages = Math.round(list.length/10);
-      console.log(numberOfPages)
-      console.log(range);
-      
-      // console.log("The total number of pages: " + numberOfPages);
-
-  function incrementPage() {
-    if (count < numberOfPages - 1) {
-      setCount(count + 1);
-    }
-  }
-  function decrementPage() {
-    if (count > 0) {
-    setCount(count - 1);
-
-    }
-  }
-  useEffect(() => {
-    setRange([count*10, count*10 + 10]);
-  }, [count]);
-console.log(range);
-let subList = list.slice(range[0], range[1]);
+    console.log(props.list)
+let subList = props.list.slice(props.range[0], props.range[1]);
 
 let listItems;
 
@@ -67,8 +38,8 @@ return (
   <div>
     <div>{listItems}</div>
     <div className= "mb-3 px-3 d-flex justify-content-between">
-      <i onClick={decrementPage} class="fa-solid fa-arrow-left-long fa-xl arrow-icon"></i>
-      <i onClick={incrementPage} class="fa-solid fa-arrow-right-long fa-xl arrow-icon"></i>
+      <i onClick={props.decrementPage} class="fa-solid fa-arrow-left-long fa-xl arrow-icon"></i>
+      <i onClick={props.incrementPage} class="fa-solid fa-arrow-right-long fa-xl arrow-icon"></i>
     </div>
 
   </div>
@@ -83,9 +54,12 @@ export default function Edit (props) {
       questions: [{question: "", answerChoices: ["", ""], indexOfAnswer: -1}],
       _id: ""
     }]);
+    const [count, setCount] = useState(0);
+    const [range, setRange] = useState(count,count + 10);
     const [search, setSearch] = useState("");
     const [searchedQuestions, setQuestions] = useState([]);
     const {query} = useParams();
+    const [list, setList] = useState(quiz[0].questions)
     const [blankQuestion, setBlankQuestion] = useState(<div className="add-user-container">
     <h5 className="circle-label">Add a new </h5>
     <i onClick={addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
@@ -94,6 +68,30 @@ export default function Edit (props) {
       if (quiz[0].name === "") {
         getResponse();
       }});
+
+useEffect(() => {
+  if(search === "" ) {
+    setList(quiz[0].questions)
+  } 
+},[quiz]);
+
+const numberOfPages = Math.round(list.length/10);
+
+function incrementPage() {
+  if (count < numberOfPages - 1) {
+    setCount(count + 1);
+  }
+}
+function decrementPage() {
+  if (count > 0) {
+  setCount(count - 1);
+
+  }
+}
+useEffect(() => {
+  setRange([count*10, count*10 + 10]);
+}, [count]);
+
      const getResponse = async ()=> {
       await axios.post("http://localhost:5000/admin/edit", {query: query}).then( async (response) => {
           let ResData = await response.data;
@@ -113,11 +111,15 @@ export default function Edit (props) {
         <NavBar/>
         <div className='container'>
           <h1>{quiz[0].name}</h1>
-          <Query setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
+          <Query  setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
           {blankQuestion}
         </div>
+        <div className= "mb-3 px-3 d-flex justify-content-between">
+          <i onClick={decrementPage} class="fa-solid fa-arrow-left-long fa-xl arrow-icon"></i>
+          <i onClick={incrementPage} class="fa-solid fa-arrow-right-long fa-xl arrow-icon"></i>
+        </div>
           <hr></hr>
-          <Questions setQuestions = {setQuestions} search = {search} searchedQuestions = {searchedQuestions} setQuiz={setQuiz} quiz = {quiz}/>
+          <Questions incrementPage={incrementPage} decrementPage={decrementPage} list={list}  range={range} setList={setList} setQuestions = {setQuestions} search = {search} searchedQuestions = {searchedQuestions} setQuiz={setQuiz} quiz = {quiz}/>
       </div>)
       
      
