@@ -34,23 +34,23 @@ export default function AddUser(props) {
     }
     return(
     <div>
-        <div className="container">
+        <div className="my-5 container user-container">
         <form onSubmit= {onSubmit}>
         <i onClick={onClick}className="fa-solid fa-trash questionDeletion"></i>
             <div className='row'>
-                <div class="mb-3 col">
-                    <label htmlFor="username" class="form-label">username</label>
-                    <input onChange={usernameChange}type="text" class="form-control" id="username"></input>
+                <div className="mb-3 col form-floating">
+                    <input onChange={usernameChange}type="text" className="form-control" id="username"></input>
+                    <label htmlFor="username" className="floating-label">username</label>
                  </div>
-                <div class="mb-3 col">
-                    <label htmlFor="email" className="form-label">email</label>
+                <div class="mb-3 col form-floating">
                     <input onChange={emailChange}type="text" className="form-control" id="email"></input>
+                    <label htmlFor="email" className="floating-label">email</label>
                 </div>
             </div>
             <div className="row">
-            <div class="col mb-3">
-                <label htmlFor="password" class="form-label">password</label>
-                <input onChange={passwordChange}type="text" class="form-control" id="password"></input>
+            <div class="col mb-3 form-floating">
+                <input onChange={passwordChange}type="text" className="form-control" id="password"></input>
+                <label htmlFor="password" className="floating-label">password</label>
             </div>
             </div>
 
@@ -58,10 +58,7 @@ export default function AddUser(props) {
                 <option value="admin">Admin</option>
                 <option value="standard" >Standard</option>
             </select>
-
-
-
-            
+        <div className="my-1">
             <div className="form-check form-switch">
                 <input onChange={setQuiz} checked={quizView}className="form-check-input" type="checkbox" value="" id="quizDash"></input>
                 <label className="form-check-label" htmlFor="quizDash">quiz dashboard</label>
@@ -74,8 +71,8 @@ export default function AddUser(props) {
                 <input onChange={setMaintenancePlan} checked={maintenance} className="form-check-input" type="checkbox" value="" id="maintenancePlan"></input>
                 <label className="form-check-label" htmlFor="maintenancePlan">maintenance plan</label>
             </div>
+            </div>
             <button className="btn btn-dark" type="submit">Add</button>
-            <hr></hr>
         </form>
     </div>
     </div>)

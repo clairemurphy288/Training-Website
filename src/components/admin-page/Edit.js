@@ -87,7 +87,7 @@ export default function Edit (props) {
     const [searchedQuestions, setQuestions] = useState([]);
     const {query} = useParams();
     const [blankQuestion, setBlankQuestion] = useState(<div className="add-user-container">
-    <h5 className="circle-label">Add a new user</h5>
+    <h5 className="circle-label">Add a new question</h5>
     <i onClick={addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
 </div>)
     useEffect(() => {
