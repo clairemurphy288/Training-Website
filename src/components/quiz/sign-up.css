@@ -1,41 +1,37 @@
-/* body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ededed;
-    box-sizing: border-box;
-    color: black;
+.sign-in-p {
     text-align: center;
-} */
+}
 
-/* * {
+.sign-in-form-control, .sign-in-btn-sub {
     box-sizing: border-box;
-    color: #333;
-} */
-
-/* .form-control, #ls-btn {
     border: none;
     outline: none;
     background: none;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.ls-heading {
+.sign-in-heading {
+    box-sizing: border-box;
     width: 100%;
     font-size: 26px;
     text-align: center;
-  }
+}
 
-.form-label {
+.sign-in-form-control:focus {
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(2,132,130,1);
+}
+
+ .sign-in-form-label {
+    box-sizing: border-box;
     display: block;
     width: 260px;
     margin: 25px auto 0;
     text-align: center;
 }
 
-p {
-    text-align: center;
-}
-
-.form-control {
+.sign-in-form-control {
+    box-sizing: border-box;
     display: block;
     width: 100%;
     margin-top: 5px;
@@ -45,11 +41,22 @@ p {
     text-align: center;
 }
 
-.form-control:focus {
-    border-bottom: 2px solid rgba(2,132,130,1);
+.sign-in-holder {
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 45%;
 }
 
-.btn-sub {
+.sign-in-container {
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+.sign-in-btn-sub {
+    box-sizing: border-box;
     margin-top: 40px;
     margin: 25px auto 0;
     margin-bottom: 20px;
@@ -63,19 +70,3 @@ p {
     font-size: 15px;
     cursor: pointer;
 }
-
-.container {
-    padding: 1em;
-}
-
-.bold-text {
-    font-weight: bold;
-}
-
-.holder {
-    border-radius: 15px;
-    background-color: #fefefe;
-    margin: 10% auto 15% auto;
-    border: 1px solid #888;
-    width: 130%;
-} */
