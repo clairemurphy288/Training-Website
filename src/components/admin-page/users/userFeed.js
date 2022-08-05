@@ -117,7 +117,7 @@ export function User(props) {
         <i onClick={onClick}className="fa-solid fa-trash questionDeletion"></i>
             <div className='row'>
                 <div class="mb-3 col form-floating">
-                    <input onChange={usernameChange} defaultValue={props.user.username} type="text" class="form-control" id="username"></input>
+                    <input onChange={usernameChange} defaultValue={props.user.username} type="text" className="form-control" id="username"></input>
                     <label className="floating-label" htmlFor="username">username</label>
                  </div>
                 <div class="mb-3 col form-floating">
@@ -127,7 +127,7 @@ export function User(props) {
             </div>
             <div className="row">
             <div class="col mb-3 form-floating">
-                <input onChange={passwordChange} defaultValue={props.user.password} type="text" class="form-control" id="password"></input>
+                <input onChange={passwordChange} defaultValue={props.user.password} type="text" className="form-control" id="password"></input>
                 <label className="floating-label" htmlFor="password">password</label>
             </div>
             </div>

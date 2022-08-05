@@ -7,7 +7,7 @@ export default function AddQuestion(props) {
     const [selectedAnswer, setSelectedAnswer] = useState(-1);
     function onClick(e) {
         props.setBlankQuestion(<div className="add-user-container">
-        <h5 className="circle-label">Add a new user</h5>
+        <h5 className="circle-label">Add a new question</h5>
         <i onClick={props.addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
     </div>)
     }
@@ -35,6 +35,12 @@ export default function AddQuestion(props) {
             console.log(res.data);
 
            }).catch(err => console.log(err));
+        props.getResponse();
+        props.setBlankQuestion(<div className="add-user-container">
+        <h1>Question Added!</h1>
+        <h5 className="circle-label">Add a new question</h5>
+        <i onClick={props.addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
+    </div>);
     }
     let answerList = answers.map((val,index) => <Answer setSelectedAnswer={setSelectedAnswer} selectedAnswer={selectedAnswer} name={index} onChange={onChange}/>);
     console.log(answerList);

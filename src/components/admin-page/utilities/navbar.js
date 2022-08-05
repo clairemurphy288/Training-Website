@@ -16,14 +16,14 @@ export default function NavBar(props) {
           </Link>
           </li>
           <li class="nav-item">
-            <Link to="/dashboard"><a class="nav-link" href="#">Standard View</a></Link>
+            <Link className="nav-link" to="/dashboard">Standard View</Link>
           </li>
           <li class="nav-item">
-            <Link to="/"><a class="nav-link" href="#">Logout</a></Link>
+            <Link className="nav-link" to="/">Logout</Link>
           </li>
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
