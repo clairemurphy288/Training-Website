@@ -60,26 +60,26 @@ export default class Login extends Component {
     render() {
         return (
             <form onSubmit = {this.onSubmit}>
-                <div className="holder">
-                    <div className="container">
-                        <h2 className='ls-heading'>SIGN-UP</h2>
+                <div className="sign-in-holder">
+                    <div className="sign-in-container">
+                        <h2 className='sign-in-heading'>SIGN-UP</h2>
 
-                            <div className="field">
-                                <label htmlFor="exampleInputusername" className="form-label">USERNAME</label>
-                                <input value={this.state.username} onChange={this.onChangeUsername} className="form-control" id="exampleInputUsername" aria-describedby="emailHelp"></input>
+                            <div className="sign-in-field">
+                                <label htmlFor="exampleInputusername" className="sign-in-form-label">USERNAME</label>
+                                <input value={this.state.username} onChange={this.onChangeUsername} className="sign-in-form-control" id="exampleInputUsername" aria-describedby="emailHelp"></input>
                             </div>
-                            <div className="field">
-                                <label htmlFor="exampleInputPassword1" className="form-label">PASSWORD</label>
-                                <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="form-control" id="exampleInputPassword1"></input>
+                            <div className="sign-in-field">
+                                <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
+                                <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
                             </div>
-                            <div className='field'>
-                                <label htmlFor='exampleInputEmail' className='form-label'>EMAIL</label>
-                                <input value={this.state.email} onChange={this.onChangeEmail} className='form-control' id='exampleInputEmail'></input>
+                            <div className='sign-in-field'>
+                                <label htmlFor='exampleInputEmail' className='sign-in-form-label'>EMAIL</label>
+                                <input value={this.state.email} onChange={this.onChangeEmail} className='sign-in-form-control' id='exampleInputEmail'></input>
                             </div>
-                        <button type="submit" className="btn-sub">Sign-Up</button>
-                        <p>Already have an account? <Link to ="/signin">SIGN IN</Link></p>
-                        <p><Link to="/dashboard">Dashboard</Link></p>
-                        <p><Link to="/questions">Questions</Link></p>
+                        <button type="submit" className="sign-in-btn-sub">Sign-Up</button>
+                        <p className='sign-in-p'>Already have an account? <Link to ="/signin">SIGN IN</Link></p>
+                        <p className='sign-in-p'><Link to="/dashboard">Dashboard</Link></p>
+                        <p className='sign-in-p'><Link to="/questions">Questions</Link></p>
                     </div>
                 </div>
             </form>
