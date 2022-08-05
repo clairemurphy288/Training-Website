@@ -91,22 +91,22 @@ export default function GetQuestions() {
     }
 
     return (
-        <div className="app">
+        <div className="question-app">
             {showScore ? (
-                <div className='score-section'>
+                <div className='question-score-section'>
 					You scored {score} out of {questionArr.length}
 				</div>
                 ) : (
                     <>
-                    <div className="question-section">
-                        <div className="question-count">
+                    <div className="question-question-section">
+                        <div className="question-question-count">
                             <span>Question {questionNumber + 1}</span>/{questionArr.length}
                         </div>
-                        <div className='question-text'>{questionArr[questionNumber]}</div>
+                        <div className='question-question-text'>{questionArr[questionNumber]}</div>
                     </div>
-                    <div className="answer-section">
+                    <div className="question-answer-section">
                     {currentQuestion.answerChoices.map((answerChoices, index) => (
-		                <button onClick={() => handleAnswerButtonClick(answerChoices)}>{answerChoices}</button>
+		                <button className="question-button-section" onClick={() => handleAnswerButtonClick(answerChoices)}>{answerChoices}</button>
 	                ))}
                     </div>
                     </>
