@@ -25,7 +25,7 @@ export default function AddUser(props) {
             maintenancePlan: maintenance,
             typeOfUser: selected
         }
-        await axios.post('http://localhost:5000/', {user: user}).then(async (res) => {
+        await axios.post('http://localhost:5000/admin/add-user', {user: user}).then(async (res) => {
             console.log(res.data);
         } ).catch(err => console.log(err));
         props.getUsers();
@@ -79,7 +79,6 @@ export default function AddUser(props) {
 
      // Helper Functions
      function usernameChange(e) {
-        console.log(props.user)
         setUsername(e.target.value);
     }
     function passwordChange(e) {

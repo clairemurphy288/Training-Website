@@ -1,6 +1,7 @@
 const router = require('express').Router();
 var ObjectId = require('mongodb').ObjectId; 
 let {Quiz} = require("../models/quiz.models");
+let User = require("../models/user.models");
 //For now quizzes can only work as .txt files
 router.route('/admin').post( async (req,res) => {
     try {
@@ -103,6 +104,11 @@ router.route('/admin/add').post(async (req,res) => {
     const value = await Quiz.updateOne({_id: quiz}, {$push: {questions: req.body.question}});
     console.log(value)
 
+    res.send("connected to backend");
+});
+router.route('/admin/add-user').post(async (req,res) => {
+    const user = new User(req.body.user);
+    await user.save()
     res.send("connected to backend");
 });
 module.exports = router;
