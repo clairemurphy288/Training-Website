@@ -80,7 +80,7 @@
     color: #ffffff;
   }
   
-  button {
+  .button {
     width: 100%;
     font-size: 16px;
     color: #ffffff;
@@ -102,14 +102,14 @@
     background-color: #ff3333;
   }
   
-  button:hover {
+  .button:hover {
     background-color: #555e7d;
   }
   
-  button:focus {
+  .button:focus {
     outline: none;
   }
   
-  button svg {
+  .button svg {
     margin-right: 5px;
   }
