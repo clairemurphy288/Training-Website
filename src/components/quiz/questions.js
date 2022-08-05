@@ -106,8 +106,7 @@ export default function GetQuestions() {
                     </div>
                     <div className="answer-section">
                     {currentQuestion.answerChoices.map((answerChoices, index) => (
-                        //added the class button for now. you can change this if you want
-		                <button className="button" onClick={() => handleAnswerButtonClick(answerChoices)}>{answerChoices}</button>
+		                <button onClick={() => handleAnswerButtonClick(answerChoices)}>{answerChoices}</button>
 	                ))}
                     </div>
                     </>
