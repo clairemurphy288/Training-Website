@@ -101,6 +101,7 @@ export default function GetQuestions() {
                     <div className="question-question-section">
                         <div className="question-question-count">
                             <span>Question {questionNumber + 1}</span>/{questionArr.length}
+                            
                         </div>
                         <div className='question-question-text'>{questionArr[questionNumber]}</div>
                     </div>

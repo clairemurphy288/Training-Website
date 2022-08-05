@@ -26,12 +26,12 @@
 
 .quiz-card {
     background-color: aqua;
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: auto;
 }
 
-.score-card {
+.time-management-card {
     background-color: red;
-    width: 250px;
-    height: 250px;
+    width: auto;
+    height: auto;
 }

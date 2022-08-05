@@ -73,6 +73,7 @@
   
   /* ANSWERS/RIGHT SECTION */
   .answer-section {
+    margin: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -81,13 +82,14 @@
   }
   
   .question-button-section {
+    margin: 0;
     width: 100%;
     font-size: 16px;
     color: #ffffff;
     background-color: #252d4a;
     border-radius: 15px;
     display: flex;
-    padding: 5px;
+    padding: 10px;
     justify-content: flex-start;
     align-items: center;
     border: 5px solid #234668;
