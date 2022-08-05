@@ -37,6 +37,7 @@ listItems = subList.map((question, index) =>  <Form setQuestions = {props.setQue
 return (
   <div>
     <div>{listItems}</div>
+    <hr></hr>
     <div className= "mb-3 px-3 d-flex justify-content-between">
       <i onClick={props.decrementPage} class="fa-solid fa-arrow-left-long fa-xl arrow-icon"></i>
       <i onClick={props.incrementPage} class="fa-solid fa-arrow-right-long fa-xl arrow-icon"></i>
