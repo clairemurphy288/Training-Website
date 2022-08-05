@@ -87,7 +87,7 @@ export default function Edit (props) {
     const [searchedQuestions, setQuestions] = useState([]);
     const {query} = useParams();
     const [blankQuestion, setBlankQuestion] = useState(<div className="add-user-container">
-    <h5 className="circle-label">Add a new question</h5>
+    <h5 className="circle-label">Add a new </h5>
     <i onClick={addQuestion} class="fa-solid fa-circle-plus fa-xl"></i>
 </div>)
     useEffect(() => {
@@ -104,7 +104,7 @@ export default function Edit (props) {
      }
     function addQuestion(e) {
       console.log("add");
-      setBlankQuestion(<AddQuestion addQuestion={addQuestion} _id={quiz[0]._id} setBlankQuestion={setBlankQuestion}/>)
+      setBlankQuestion(<AddQuestion getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
 
@@ -113,7 +113,7 @@ export default function Edit (props) {
         <NavBar/>
         <div className='container'>
           <h1>{quiz[0].name}</h1>
-          <Query setQuestions = {setQuestions}quizId ={quiz[0]._id} setSearch = {setSearch} search={search}/>
+          <Query setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
           {blankQuestion}
         </div>
           <hr></hr>

@@ -35,6 +35,7 @@ export default function AddQuestion(props) {
             console.log(res.data);
 
            }).catch(err => console.log(err));
+        props.getResponse();
     }
     let answerList = answers.map((val,index) => <Answer setSelectedAnswer={setSelectedAnswer} selectedAnswer={selectedAnswer} name={index} onChange={onChange}/>);
     console.log(answerList);
