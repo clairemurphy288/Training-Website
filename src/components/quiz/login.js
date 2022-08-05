@@ -10,7 +10,8 @@ export default class Login extends Component {
          this.state = {
             username: "",
             password: "",
-            email: ""
+            email: "",
+            toggleButton: ""
          }
          this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
@@ -69,8 +70,11 @@ export default class Login extends Component {
                                 <input value={this.state.username} onChange={this.onChangeUsername} className="sign-in-form-control" id="exampleInputUsername" aria-describedby="emailHelp"></input>
                             </div>
                             <div className="sign-in-field">
-                                <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
-                                <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
+                                <p>
+                                    <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
+                                    <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
+                                    <i class="bi bi-eye-slash" id="toggle-icon"></i>
+                                </p>
                             </div>
                             <div className='sign-in-field'>
                                 <label htmlFor='exampleInputEmail' className='sign-in-form-label'>EMAIL</label>

@@ -76,8 +76,11 @@ export default class Signin extends Component {
                                 <input value={this.state.username} onChange={this.onChangeUsername} className="sign-in-form-control" id="exampleInputUsername" aria-describedby="emailHelp"></input>
                             </div>
                             <div className="sign-in-field">
-                                <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
-                                <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
+                                <p>
+                                    <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
+                                    <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
+                                    <i class="bi bi-eye-slash" id="toggle-icon"></i>
+                                </p>
                             </div>
                         <button type="submit" className="sign-in-btn-sub">login</button>
                         <p className='sign-in-p'>Don't have an account? <Link to ="/">SIGN UP</Link></p>
