@@ -20,10 +20,10 @@
     min-height: 100vh;
   } */
   
-  .app {
+  .question-app {
     background-color: #252d4a;
-    width: 550px;
-    min-height: 300px;
+    width: 600px;
+    min-height: 250px;
     height: min-content;
     border-radius: 15px;
     padding: 20px;
@@ -32,7 +32,7 @@
     justify-content: space-evenly;
   }
   
-  .score-section {
+  .question-score-section {
     display: flex;
     font-size: 24px;
     align-items: center;
@@ -40,22 +40,22 @@
   }
   
   /* QUESTION/TIMER/LEFT SECTION */
-  .question-section {
+  .question-question-section {
     width: 100%;
     position: relative;
   }
   
-  .question-count {
+  .question-question-count {
     margin-bottom: 20px;
     color: #ffffff;
   }
   
-  .question-count span {
+  .question-question-count span {
     font-size: 28px;
     color: #ffffff;
   }
   
-  .question-text {
+  .question-question-text {
     margin-bottom: 12px;
     color: #ffffff;
     margin: .5rem;
@@ -80,7 +80,7 @@
     color: #ffffff;
   }
   
-  button {
+  .question-button-section {
     width: 100%;
     font-size: 16px;
     color: #ffffff;
@@ -102,14 +102,14 @@
     background-color: #ff3333;
   }
   
-  button:hover {
+  .question-button-section:hover {
     background-color: #555e7d;
   }
   
-  button:focus {
+  .question-button-section:focus {
     outline: none;
   }
   
-  button svg {
+  .question-button-section svg {
     margin-right: 5px;
   }
