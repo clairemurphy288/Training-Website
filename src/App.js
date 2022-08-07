@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.min.js';
 import Login from "./components/quiz/login.js";
 import Admin from "./components/admin-page/admin.js"
 import Edit from "./components/admin-page/Edit"

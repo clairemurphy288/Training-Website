@@ -13,6 +13,7 @@ export default function Query(props) {
         await axios.post("http://localhost:5000/admin/quiz/query", {search: props.search, _id: props.quizId}).then( async (response) => {
                 console.log(response.data);
                 props.setQuestions(response.data)
+                props.setCount(0);
             })
             .catch(function (error) {
       });

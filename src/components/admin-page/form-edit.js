@@ -9,7 +9,6 @@ export default function Form(props) {
     const [data, setData] = useState([]);
     const [question, setQuestion] = useState(props.question)
     const [selectedAnswer, setAnswer] = useState(props.indexOfAnswer);
-    //props I need _id, question
     async function onClick() {
         await axios.post('http://localhost:5000/admin/edit/question-delete', { quizId: props.quizId, id: props.id}).then(async res => {
             props.setQuiz(res.data);

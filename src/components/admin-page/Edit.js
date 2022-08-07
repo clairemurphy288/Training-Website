@@ -19,7 +19,7 @@ export function Questions (props) {
     useEffect(() => {
       if(props.search !== "" ) {
         let questions= [];
-        for(let i =0; i < props.searchedQuestions.length; i++) {
+        for(let i = 0; i < props.searchedQuestions.length; i++) {
           questions.push(props.searchedQuestions[i].questions);
         }
         props.setList(questions);
@@ -103,7 +103,7 @@ useEffect(() => {
      }
     function addQuestion(e) {
       console.log("add");
-      setBlankQuestion(<AddQuestion getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
+      setBlankQuestion(<AddQuestion setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
 
@@ -112,7 +112,7 @@ useEffect(() => {
         <NavBar/>
         <div className='container'>
           <h1>{quiz[0].name}</h1>
-          <Query  setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
+          <Query setCount={setCount}  setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
           {blankQuestion}
         </div>
         <div className= "mb-3 px-3 d-flex justify-content-between">

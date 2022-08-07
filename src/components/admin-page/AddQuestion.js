@@ -35,7 +35,7 @@ export default function AddQuestion(props) {
             console.log(res.data);
 
            }).catch(err => console.log(err));
-        props.getResponse();
+        console.log(props.getResponse());
         props.setBlankQuestion(<div className="add-user-container">
         <h1>Question Added!</h1>
         <h5 className="circle-label">Add a new question</h5>
