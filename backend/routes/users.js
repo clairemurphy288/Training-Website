@@ -47,9 +47,9 @@ router.route('/').get( async(req,res) => {
 router.route('/feed').get( async (req,res) => {
     try {
         //this function saves the users to our database
-        const users = await User.find();
+        const users = await User.find().sort({_id: -1});
         //users are sent in reverse order so newest to oldest render 
-        res.send(users.reverse());
+        res.send(users);
     } catch (err) {
         res.json('Error' + err);
     }

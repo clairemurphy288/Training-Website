@@ -103,7 +103,7 @@ useEffect(() => {
      }
     function addQuestion(e) {
       console.log("add");
-      setBlankQuestion(<AddQuestion setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
+      setBlankQuestion(<AddQuestion setSearch={setSearch} setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
 

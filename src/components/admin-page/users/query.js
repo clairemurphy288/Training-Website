@@ -1,4 +1,4 @@
-import react from 'react';
+
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
@@ -23,6 +23,7 @@ export default function Query(props) {
             })
             .catch(function (error) {
       });
+      props.setCount(0);
     }
     return(<div class="input-group">
       <input onChange={onChange} type="search" id="form1" class="form-control" />

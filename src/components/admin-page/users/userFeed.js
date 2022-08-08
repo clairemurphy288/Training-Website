@@ -61,7 +61,7 @@ export default function UserFeed() {
             <NavBar/>
             
                 <div className="container">
-                <Query getUsers = {getUsers} setUsers = {setUsers}/>
+                <Query  setCount = {setCount} getUsers = {getUsers} setUsers = {setUsers}/>
                 {blankUser}
                 </div>
                 <div className= "mb-3 px-3 d-flex justify-content-between">

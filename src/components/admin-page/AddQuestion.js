@@ -24,6 +24,7 @@ export default function AddQuestion(props) {
         setQues(e.target.value);
 
     }
+    // Idea maybe on submit the question will be added dynamically to the top of the page?
     async function onSubmit(e) {
         e.preventDefault();
         const newQuestion = {
@@ -68,7 +69,6 @@ function Answer(props) {
             setStyle("form-control ");
             setClick(true);
             props.setSelectedAnswer(-1);
-            //remove class
             console.log("selected");
         } else if(props.selectedAnswer === -1) {
             setClick(true);
