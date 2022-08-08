@@ -12,7 +12,8 @@ export default class Admin extends Component {
         this.state = {
             fileContent: "",
             titleOfQuiz: "",
-            resData: [[], []]
+            resData: [[], []],
+            iconStyle: "text-warning mx-3 fa-solid fa-arrow-right-from-bracket fa-lg"
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -40,7 +41,6 @@ export default class Admin extends Component {
           })
         
     }
-   
     onChange(e) {
         var file = e.target.files[0];
         var reader = new FileReader();
@@ -60,6 +60,13 @@ export default class Admin extends Component {
             titleOfQuiz: e.target.value
         });
     }
+    mouseOver(e) {
+        e.currentTarget.classList.add('text-warning', 'fa-shadow');
+
+    }
+    mouseOut(e) {
+        e.currentTarget.classList.remove('text-warning', 'fa-shadow');
+    }
     render () {
         return (
         <div>
@@ -72,6 +79,7 @@ export default class Admin extends Component {
             
             
             <div class="mb-3">
+                <h5>upload a file to import your quiz</h5>
                 <label htmlFor="title" class="form-label">Title</label>
                 <input onChange={this.titleChange} type="text" className="form-control" id="title"></input>
             </div>
@@ -82,6 +90,8 @@ export default class Admin extends Component {
                 <button className="btn btn-primary" type="submit">Submit</button>
             
             </form>
+            <h5 className="mt-2 quick-start-title">or start with a blank quiz </h5>
+            <i onMouseOut={this.mouseOut} onMouseOver={this.mouseOver} className="mx-3 fa-solid fa-arrow-right-from-bracket fa-lg"></i>
             </div>
         </div>
         )

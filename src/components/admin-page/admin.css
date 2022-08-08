@@ -1,3 +1,10 @@
 .fa-circle-plus {
     cursor: pointer;
 }
+.quick-start-title {
+    display: inline-block;
+}
+.fa-shadow {
+    text-shadow:1px 1px rgba(32, 31, 30, 0.75);
+    cursor: pointer;
+}
