@@ -106,12 +106,21 @@ useEffect(() => {
       setBlankQuestion(<AddQuestion setSearch={setSearch} setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
+    const mystyles = {
+      border: "none",
+      display: "inline",
+      fontFamily: "inherit",
+      fontSize: "2rem",
+      padding: "none",
+      width: "auto"
+    }
 
       return(
       <div>
         <NavBar/>
         <div className='container'>
-          <h1>{quiz[0].name}</h1>
+          <input style={mystyles} className="mb-1" type='text' name='name' defaultValue={quiz[0].name} ></input>
+          {/* <h1>{quiz[0].name}</h1> */}
           <Query setCount={setCount}  setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
           {blankQuestion}
         </div>

@@ -61,11 +61,11 @@ export default class Admin extends Component {
         });
     }
     mouseOver(e) {
-        e.currentTarget.classList.add('text-warning', 'fa-shadow');
+        e.currentTarget.classList.add('text-primary', 'fa-shadow');
 
     }
     mouseOut(e) {
-        e.currentTarget.classList.remove('text-warning', 'fa-shadow');
+        e.currentTarget.classList.remove('text-primary', 'fa-shadow');
     }
     render () {
         return (
