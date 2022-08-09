@@ -10,9 +10,7 @@ router.route('/admin').post( async (req,res) => {
         let quiz = req.body[0].fileContent;
         console.log(JSON.stringify(quiz))
         quiz = quiz.replace(/\n/g, "").trim();
-        // console.log(quiz)
         quiz = quiz.split("\r");
-        // console.log(quiz);
         const questions = [];
         for (let i = 1; i < quiz.length; i++) {
             let line = quiz[i].trim().split("\t");

@@ -3,7 +3,6 @@ let {Quiz} = require("../models/quiz.models");
 
 router.route('/quizzes').get(async(req,res) => {
     try {
-        console.log('quiz-number');
         const quizInfo = await Quiz.find();
         const quizTitles = []
         for(let i = 0; i < quizInfo.length; i++) {
@@ -15,7 +14,7 @@ router.route('/quizzes').get(async(req,res) => {
         res.status(400).json('Error' + err);
     }
 });
-
+//change this route name
 router.route('/questionss').get(async(req,res) => {
     try {
         const questionInfo = await Quiz.find();
