@@ -10,7 +10,6 @@ import { Questions } from "../admin-page/Edit";
 export default function GetQuestions() {
     const location = useLocation();
     const  stateQuiz  = location.state;
-    // const [quiz, setQuiz] = useState(stateQuiz.quiz);
 
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
@@ -67,8 +66,8 @@ export default function GetQuestions() {
                     </div>
                     <div className="question-answer-section">
                     {randomArray[questionNumber].answerChoices.map((answerChoices, index) => (
-                        
-		                <button className="question-button-section" onClick={() => handleAnswerButtonClick(answerChoices)}  >{answerChoices}</button>))}
+                        answerChoices !== "" ? <button className="question-button-section" onClick={() => handleAnswerButtonClick(answerChoices)}  >{answerChoices}</button>
+                        : <div style={{visibility: "hidden"}}>Blank Div</div>))}
                     </div>
                     </>
                 )}

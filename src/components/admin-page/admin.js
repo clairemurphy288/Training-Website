@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import LiveQuiz from "./LiveQuiz";
 import axios from 'axios';
 import "./admin.css"
-import { Link } from 'react-router-dom';
 import NavBar from "./utilities/navbar";
 
 
