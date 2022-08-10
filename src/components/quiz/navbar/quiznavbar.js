@@ -15,7 +15,7 @@ export default function NavBar(props) {
             <Link className="nav-link" to="/dashboard">Dashboard</Link>
           </li>
           <li class="nav-item">
-            <Link className="nav-link" to="/dashboard">Quiz</Link>
+            <Link className="nav-link" to="/quiz">Quiz</Link>
           </li>
           <li>
           <Link className="nav-link" to="/"><button class="btn btn-outline-success" type="button">Signup</button></Link>
