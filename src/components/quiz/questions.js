@@ -9,6 +9,7 @@ import { Questions } from "../admin-page/Edit";
 
 export default function GetQuestions() {
     //BUG: if stateQuiz is null the page does render!!! IDEA: make a conditional that redirect to previous page
+    //Also could be caused if they dont choose the size of their quiz
     const location = useLocation();
     const  stateQuiz  = location.state;
 
