@@ -37,6 +37,6 @@ const adminRouter = require(__dirname + '/routes/admin');
 app.use('/', adminRouter);
 
 app.listen(port, () => {
-    console.log(`Server is runing on port: ${port}`);
+    console.log(`Server is running on port: ${port}`);
 });
 
