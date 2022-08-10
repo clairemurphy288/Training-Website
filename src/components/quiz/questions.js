@@ -8,6 +8,7 @@ import {useLocation} from 'react-router-dom';
 import { Questions } from "../admin-page/Edit";
 
 export default function GetQuestions() {
+    //BUG: if stateQuiz is null the page does render!!! IDEA: make a conditional that redirect to previous page
     const location = useLocation();
     const  stateQuiz  = location.state;
 
@@ -48,8 +49,6 @@ export default function GetQuestions() {
         }
              
     }
-
-
     return (
         <div className="question-app">
             {showScore ? (
