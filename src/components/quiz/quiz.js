@@ -55,11 +55,17 @@ export default class Quiz extends Component {
                 <div>
                     <Navbar />
                     <div className='quiz-holder'>
-                        <div className='quiz-selector-scetion'>
-                            <select className="form-select" id='quiz-form-select' value={this.state.selected} onChange={this._handleChange}>
-                                {items}
-                            </select>
-                            <input className="text" onChange={this.setSize}></input>
+                        <div className='quiz-selector-section'>
+                            <div className='quiz-'>
+                                <label className='quiz-form-label'>Choose a quiz:</label>
+                                <select className="form-select" id='quiz-form-select' value={this.state.selected} onChange={this._handleChange}>
+                                    {items}
+                                </select>
+                            </div>
+                            <div>
+                                <label className='quiz-form-label'>Question amount:</label>
+                                <input id="quiz-form-text" className="quiz-form-text" onChange={this.setSize}></input>
+                            </div>
                         </div>
                         <div className='quiz-button-section'>
                             <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><Button variant="primary" type="submit">SUBMIT</Button></Link>

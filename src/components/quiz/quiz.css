@@ -10,6 +10,18 @@
     justify-content: space-evenly;
     margin: auto;
     margin-top: 150px;
+    box-sizing: border-box;
+}
+
+.quiz-selector-section {
+    justify-content: center;
+    
+}
+
+.quiz-form-label {
+    color: #fff;
+    text-align: center;
+    margin-left: 25px;
 }
 
 #quiz-form-select {
@@ -18,4 +30,17 @@
     cursor: pointer;
     padding: 10px;
     margin: 25px;
+}
+
+.quiz-form-text {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 25px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 2px solid rgba(0,0,0,1);
+    text-align: center;
+    display: inline-block;
 }
