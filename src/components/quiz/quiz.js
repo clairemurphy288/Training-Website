@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Navbar from "./navbar/quiznavbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './quiz.css';
 
 export default class Quiz extends Component {
 
@@ -53,12 +54,14 @@ export default class Quiz extends Component {
         return ( 
                 <div>
                     <Navbar />
-                    <div className='quiz-container'>
-                        <select className="form-select" value={this.state.selected} onChange={this._handleChange}>
-                            {items}
-                        </select>
-                        <input className="text" onChange={this.setSize}></input>
-                        <div className='quiz-s'>
+                    <div className='quiz-holder'>
+                        <div className='quiz-selector-scetion'>
+                            <select className="form-select" id='quiz-form-select' value={this.state.selected} onChange={this._handleChange}>
+                                {items}
+                            </select>
+                            <input className="text" onChange={this.setSize}></input>
+                        </div>
+                        <div className='quiz-button-section'>
                             <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><Button variant="primary" type="submit">SUBMIT</Button></Link>
                         </div>
                     </div>
