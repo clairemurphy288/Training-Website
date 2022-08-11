@@ -53,12 +53,12 @@ export default class Quiz extends Component {
         return ( 
                 <div>
                     <Navbar />
-                    <div >
+                    <div className='quiz-container'>
                         <select className="form-select" value={this.state.selected} onChange={this._handleChange}>
                             {items}
                         </select>
                         <input className="text" onChange={this.setSize}></input>
-                        <div>
+                        <div className='quiz-s'>
                             <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><Button variant="primary" type="submit">SUBMIT</Button></Link>
                         </div>
                     </div>
