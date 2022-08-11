@@ -12,11 +12,13 @@ export default class Signin extends Component {
          this.state = {
             username: "",
             password: "",
-            validSignin: false
+            validSignin: false,
+            passwordVisibility: "password"
          }
          this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.changeIcon = this.changeIcon.bind(this);
    
     }
 
@@ -53,6 +55,11 @@ export default class Signin extends Component {
         });   
     }
 
+    changeIcon(e) {
+        e.currentTarget.classList.toggle("bi-eye-slash");
+        e.currentTarget.classList.toggle("bi-eye");
+        this.state.passwordVisibility === "password" ? this.setState({passwordVisibility: "text"}) : this.setState({passwordVisibility: "password"})
+    }
 
     componentDidMount() {
         this.setState({
@@ -78,8 +85,8 @@ export default class Signin extends Component {
                             <div className="sign-in-field">
                                 <p>
                                     <label htmlFor="exampleInputPassword1" className="sign-in-form-label">PASSWORD</label>
-                                    <input value={this.state.password} onChange={this.onChangePassword}  type="password" className="sign-in-form-control" id="exampleInputPassword1"></input>
-                                    <i class="bi bi-eye-slash" id="toggle-icon"></i>
+                                    <input value={this.state.password} onChange={this.onChangePassword}  type={this.state.passwordVisibility} className="sign-in-form-control" id="exampleInputPassword1"></input>
+                                    <i onClick={this.changeIcon} class="bi bi-eye-slash" id="toggle-icon"></i>
                                 </p>
                             </div>
                         <button type="submit" className="sign-in-btn-sub">login</button>
