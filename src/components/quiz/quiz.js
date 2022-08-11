@@ -56,7 +56,7 @@ export default class Quiz extends Component {
                     <Navbar />
                     <div className='quiz-holder'>
                         <div className='quiz-selector-section'>
-                            <div className='quiz-'>
+                            <div>
                                 <label className='quiz-form-label'>Choose a quiz:</label>
                                 <select className="form-select" id='quiz-form-select' value={this.state.selected} onChange={this._handleChange}>
                                     {items}
@@ -68,7 +68,7 @@ export default class Quiz extends Component {
                             </div>
                         </div>
                         <div className='quiz-button-section'>
-                            <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><Button variant="primary" type="submit">SUBMIT</Button></Link>
+                            <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
                         </div>
                     </div>
                 </div> 
