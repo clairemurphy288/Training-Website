@@ -1,15 +1,26 @@
 require("dotenv").config();
-const express = require('express');
-//cors is some middleware still not sure what it does. 
+const express = require('express'); 
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 5000;
-////not sure what this does
 app.use(cors());
 app.use(express.json());
 
+///passport.js for cookies, sessions, and auth
+const session = require('express-session');
+const passport = require('passport');
+const passportLocalMongoose = require("passport-local-mongoose");
 
+//salting and hashing passwords
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 ////////CONNECTING TO MONGODB & MONGOOSE

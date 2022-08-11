@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './sign-up.css';
-
+import { useHistory } from 'react-router-dom';
 
 export default class Login extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ export default class Login extends Component {
             email: "",
             passwordVisibility: "password"
          }
-         this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -40,7 +40,6 @@ export default class Login extends Component {
     }
 
     onSubmit(e) {
-        //prevents submission of default values
         console.log("submitted!")
         e.preventDefault();
         const user = {
@@ -49,8 +48,14 @@ export default class Login extends Component {
             email: this.state.email
         }
         console.log(user);
-        axios.post('http://localhost:5000',user).then(res => console.log(res.data));
- 
+        axios.post('http://localhost:5000',user).then(res => {
+        if (res.data) {
+            console.log("attempting to redirect to dashboard")
+                return <Navigate to ="/dashboard" />
+        } else {
+            console.log("problem")
+        }
+    });
     }
   
     componentDidMount() {

@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocalMongoose = require("passport-local-mongoose");
 //This file is the schema for each user's log-in data
 const Schema = mongoose.Schema;
 
@@ -13,13 +16,14 @@ const userSchema = new Schema({
         maxlength: 20
 
     },
-    password: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 6,
-        maxlength: 20
-    },
+    //Going to use some other validation for passwords :/
+    // password: {
+    //     type: String,
+    //     required: true,
+    //     trim: true,
+    //     minlength: 6,
+    //     maxlength: 20
+    // },
     email: {
         type: String,
         required: true,
@@ -46,6 +50,7 @@ const userSchema = new Schema({
 
 });
 
+userSchema.plugin(passportLocalMongoose)
 //This variable refers to our collection within our db
 const User = mongoose.model('User', userSchema);
 

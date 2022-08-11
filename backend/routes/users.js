@@ -1,7 +1,14 @@
 const router = require('express').Router();
 let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
+const session = require('express-session');
+const passport = require('passport');
+const passportLocalMongoose = require("passport-local-mongoose");
 
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser())
 
 router.route('/').get( async(req,res) => {
     try {
@@ -28,20 +35,23 @@ router.route('/').get( async(req,res) => {
     
     }});
 
-
+//let's add authentication to register users 
     router.route('/').post( async (req,res) => {
-        try {
-            const newUser = User({
-                username: req.body.username,
-                password: req.body.password,
-                email: req.body.email
-            });
-            //this function saves the users to our database
-            await newUser.save();
-            res.send("User added successfullly");
-        } catch (err) {
-            res.json('Error' + err);
-        }
+        const newUser = User({
+            username: req.body.username,
+            email: req.body.email
+        });
+
+        User.register(newUser, req.body.password, (err, user)=> {
+            if (err) {
+                console.log(err);
+            } else {
+                passport.authenticate("local")(req, res, () =>{
+                    res.send(true);
+                    console.log("new user added!")
+                })
+            }
+        })
     });
 
 router.route('/feed').get( async (req,res) => {

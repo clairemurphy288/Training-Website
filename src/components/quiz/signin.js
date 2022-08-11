@@ -33,7 +33,7 @@ export default class Signin extends Component {
         });
     }
 
-
+    //validates signin with get request
     async onSubmit(e) {
         e.preventDefault();
         console.log("sent");
