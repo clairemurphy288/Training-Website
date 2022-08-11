@@ -68,8 +68,6 @@ export default function Login(props) {
                             </div>
                         <button type="submit" className="sign-in-btn-sub">Sign-Up</button>
                         <p className='sign-in-p'>Already have an account? <Link to ="/signin">SIGN IN</Link></p>
-                        <p className='sign-in-p'><Link to="/dashboard">Dashboard</Link></p>
-                        <p className='sign-in-p'><Link to="/questions">Questions</Link></p>
                     </div>
                 </div>
             </form>
