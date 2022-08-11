@@ -7,7 +7,6 @@ import Navbar from "./navbar/quiznavbar";
 
 export default class Dashboard extends Component {
 
-    //first commit
 
     render() {
         return (

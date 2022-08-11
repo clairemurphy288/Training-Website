@@ -9,7 +9,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser())
-
+//fix login auth!
 router.route('/').get( async(req,res) => {
     try {
         console.log(req.query);
@@ -34,8 +34,7 @@ router.route('/').get( async(req,res) => {
         res.status(400).json('Error' + err);
     
     }});
-
-//let's add authentication to register users 
+//need to add error catching
     router.route('/').post( async (req,res) => {
         const newUser = User({
             username: req.body.username,
@@ -47,6 +46,7 @@ router.route('/').get( async(req,res) => {
                 console.log(err);
             } else {
                 passport.authenticate("local")(req, res, () =>{
+                    console.log(req);
                     res.send(true);
                     console.log("new user added!")
                 })

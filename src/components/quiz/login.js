@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './sign-up.css';
 import {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
+    let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ export default function Login(props) {
     function onChangeEmail(e) {
             setEmail(e.target.value);
     }
-
+    //Error catching needed.
     function onSubmit(e) {
         console.log("submitted!")
         e.preventDefault();
@@ -31,10 +32,10 @@ export default function Login(props) {
             password: password,
             email: email
         }
-        console.log(user);
         axios.post('http://localhost:5000',user).then(res => {
         if (res.data) {
-            console.log("attempting to redirect to dashboard")
+            console.log("attempting to redirect to dashboard");
+            navigate("/dashboard");
         } else {
             console.log("problem")
         }
