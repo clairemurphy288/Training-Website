@@ -14,7 +14,7 @@ export default function NavBar(props) {
                   <a href="/quiz" class="nav-item nav-link">Quiz</a>
               </div>
               <form class="d-flex ms-auto">
-                  <button type="submit" class="btn btn-outline-light">LOGOUT</button>
+                  <Link to ="/signin"><button type="submit" class="btn btn-outline-light">LOGOUT</button></Link>
               </form>
           </div>
       </div>        
