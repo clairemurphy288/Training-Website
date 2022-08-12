@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 export default function NavBar(props) {
     return(
-      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'lightblue' }}>
       <div class="container-fluid">
           <a href="/dashboard" class="navbar-brand">Heraeus</a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse9">
