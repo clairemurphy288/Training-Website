@@ -57,7 +57,13 @@ router.route('/login').post( (req,res, next) => {
             }
         })
     });
+router.route('/verify').get( (req,res)=> {
+    console.log("this is the verification route.");
+    console.log(req.user);
+    console.log(req.isAuthenticated());
+    res.send("connected to verification")
 
+})
 router.route('/feed').get( async (req,res) => {
     try {
         //this function saves the users to our database
