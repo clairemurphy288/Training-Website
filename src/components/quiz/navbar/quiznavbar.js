@@ -1,27 +1,22 @@
 import {Link} from 'react-router-dom';
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 export default function NavBar(props) {
     return(
-    <nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container-fluid">
-    <Link className="nav-link active"  to="/dashboard">
-      <a class="navbar-brand">Heraeus</a>
-    </Link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <Link className="nav-link" to="/dashboard">Dashboard</Link>
-          </li>
-          <li class="nav-item">
-            <Link className="nav-link" to="/quiz">Quiz</Link>
-          </li>
-          <li>
-          <Link className="nav-link" to="/"><button class="btn btn-outline-success" type="button">Signup</button></Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <div class="container-fluid">
+          <a href="/dashboard" class="navbar-brand">Heraeus</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse9">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse9">
+              <div class="navbar-nav">
+                  <a href="/dashboard" class="nav-item nav-link active">Home</a>
+                  <a href="/quiz" class="nav-item nav-link">Quiz</a>
+              </div>
+              <form class="d-flex ms-auto">
+                  <button type="submit" class="btn btn-outline-light">LOGOUT</button>
+              </form>
+          </div>
+      </div>        
   </nav>)
 }
