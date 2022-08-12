@@ -35,6 +35,7 @@ connection.once('open', () => {
 
 
 
+
 ///Router for the root path
 const userRouter = require(__dirname + '/routes/users');
 app.use('/', userRouter);

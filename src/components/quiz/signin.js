@@ -6,6 +6,7 @@ import {useState} from 'react';
 import './sign-up.css';
 
 export default function Signin(props) {
+    let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordVisibility, setPasswordVisibility] = useState("password");
@@ -18,7 +19,6 @@ export default function Signin(props) {
             setPassword(e.target.value)
     }
 
-    //validates signin with get request
     async function onSubmit(e) {
         e.preventDefault();
         console.log("sent");
@@ -28,7 +28,10 @@ export default function Signin(props) {
         }
         console.log(user);
         await axios.post('http://localhost:5000/login',user)
-        .then(res => { console.log(res.data);
+        .then(res => { 
+            if (res.data) {
+                navigate("/dashboard")
+        }
         });  
     }
 

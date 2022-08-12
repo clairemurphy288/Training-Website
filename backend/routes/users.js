@@ -3,14 +3,16 @@ let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
 const session = require('express-session');
 const passport = require('passport');
+LocalStrategy = require('passport-local').Strategy;
 
 
-passport.use(User.createStrategy());
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser())
 //you can catch errors with express next() functions
 router.route('/login').post( (req,res, next) => {
     console.log(req.body);
+
     const newUser = User({
         username: req.body.username,
         password: req.body.password
@@ -21,16 +23,17 @@ router.route('/login').post( (req,res, next) => {
             return next(err);
         } else {
             passport.authenticate("local", (err, user, info)=>  {
+                console.log(user)
                 if (err) {
                     return next(err)
                 }
                 if (!user) {
                     res.send(false);
+                } else {
+                    console.log("user autheticated!")
+                    res.send(true)
                 }
-
             })(req,res, ()=> {
-                res.send(true);
-                console.log("user autheticated!")
             })
         }
     });
