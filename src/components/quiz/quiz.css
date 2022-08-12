@@ -21,7 +21,6 @@
 .quiz-form-label {
     color: #fff;
     text-align: center;
-    margin-left: 25px;
 }
 
 #quiz-form-select {
@@ -29,18 +28,37 @@
     color: #fff;
     cursor: pointer;
     padding: 10px;
-    margin: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .quiz-form-text {
-    box-sizing: border-box;
-    display: block;
+    font-family: inherit;
     width: 100%;
-    margin-top: 5px;
-    margin-left: 25px;
-    padding-bottom: 5px;
-    font-size: 16px;
-    border-bottom: 2px solid rgba(0,0,0,1);
-    text-align: center;
-    display: inline-block;
+    border: 0;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+}
+
+.quiz-form-text:focus {
+    border-bottom: 2px solid lightblue;
+    color: lightblue;
+}
+
+#quiz-button-sub {
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    display: block;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
 }

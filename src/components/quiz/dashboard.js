@@ -16,7 +16,7 @@ export default class Dashboard extends Component {
                 <Card.Body>
                 <Card.Title>Lean Six Sigma Quiz</Card.Title>
                 <Card.Text>
-                    Hey your about to enter the Lean Six Sigma Quiz Dashboard
+                    Description
                 </Card.Text>
                 <Link to='/quiz'><Button variant="primary">Lets Go!</Button></Link>
                 </Card.Body>
@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
                 <Card.Body>
                 <Card.Title>Time Management</Card.Title>
                 <Card.Text>
-                    Hey your about to enter the Time Management Dashboard
+                    Description
                 </Card.Text>
                 <Link to='/quiz'><Button variant="primary">Lets Go!</Button></Link>
                 </Card.Body>
