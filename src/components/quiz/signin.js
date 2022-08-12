@@ -27,9 +27,8 @@ export default function Signin(props) {
             password: password
         }
         console.log(user);
-        let signin;
-        await axios.get('http://localhost:5000',{params: user})
-        .then(res => {
+        await axios.post('http://localhost:5000/login',user)
+        .then(res => { console.log(res.data);
         });  
     }
 

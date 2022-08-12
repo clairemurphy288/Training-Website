@@ -3,37 +3,38 @@ let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
 const session = require('express-session');
 const passport = require('passport');
-const passportLocalMongoose = require("passport-local-mongoose");
 
 
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser())
-//fix login auth!
-router.route('/').get( async(req,res) => {
-    try {
-        console.log(req.query);
-        const users = await User.findOne({username: req.query.username});
-        if(req.query.username === users.username){
-            console.log('username is true');
-            if(req.query.password === users.password){
-                console.log('password is true');
-                res.send([users, true]);
-            } else {
-                console.log('password is incorrect');
-                console.log(users.password);
-                res.send([null, false]);
-            }
+//you can catch errors with express next() functions
+router.route('/login').post( (req,res, next) => {
+    console.log(req.body);
+    const newUser = User({
+        username: req.body.username,
+        password: req.body.password
+    });
+
+    req.login(newUser, (err)=> {
+        if (err) {
+            return next(err);
         } else {
-            console.log('false');
-            res.send([null, false]);
+            passport.authenticate("local", (err, user, info)=>  {
+                if (err) {
+                    return next(err)
+                }
+                if (!user) {
+                    res.send(false);
+                }
+
+            })(req,res, ()=> {
+                res.send(true);
+                console.log("user autheticated!")
+            })
         }
-        
-    }catch (err) {
-        console.log(err);
-        res.status(400).json('Error' + err);
-    
-    }});
+    });
+   });
 //need to add error catching
     router.route('/').post( async (req,res) => {
         const newUser = User({
