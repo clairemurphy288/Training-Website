@@ -4,11 +4,16 @@ import './dashboard.css';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
 import Navbar from "./navbar/quiznavbar";
+import axios from 'axios'
 
-export default class Dashboard extends Component {
+export default function Dashboard(props) {
+    axios.get("http://localhost:5000/verify").then(function (res) {
+        console.log(res.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
 
-
-    render() {
         return (
             <div className='dash-container'>
                 <Navbar />
@@ -33,5 +38,5 @@ export default class Dashboard extends Component {
                 </Card>
             </div>
         );
-    }
+    
 }
