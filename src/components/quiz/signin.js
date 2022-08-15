@@ -32,7 +32,7 @@ export default function Signin(props) {
             if (res.data) {
                 navigate("/dashboard")
         }
-        });  
+        }).catch((err)=> console.log(err));  
     }
 
     function changeIcon(e) {

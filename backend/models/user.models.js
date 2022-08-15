@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const session = require('express-session');
-const passport = require('passport');
 const passportLocalMongoose = require("passport-local-mongoose");
 //This file is the schema for each user's log-in data
 const Schema = mongoose.Schema;

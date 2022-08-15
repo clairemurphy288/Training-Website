@@ -12,7 +12,6 @@
     "cors": "^2.8.5",
     "express-session": "^1.17.3",
     "os-browserify": "^0.3.0",
-    "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
     "react": "^18.2.0",

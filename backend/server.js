@@ -9,14 +9,17 @@ app.use(express.json());
 
 ///passport.js for cookies, sessions, and auth
 const session = require('express-session');
+const passportLocalMongoose = require("passport-local-mongoose")
 const passport = require('passport');
-const passportLocalMongoose = require("passport-local-mongoose");
+LocalStrategy = require('passport-local').Strategy;
+
 
 //salting and hashing passwords
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false, 
+    cookie: {secure: false}
 }));
 
 app.use(passport.initialize());
@@ -31,6 +34,12 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully!")
 });
 ////////////I still need to close mongoDB somewhere...
+
+const User = require("./models/user.models");
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser())
 
 
 

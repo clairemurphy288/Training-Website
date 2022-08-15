@@ -1,14 +1,11 @@
 const router = require('express').Router();
 let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
-const session = require('express-session');
-const passport = require('passport');
-LocalStrategy = require('passport-local').Strategy;
+const passport = require("passport")
 
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser())
+
+
 //you can catch errors with express next() functions
 router.route('/login').post( (req,res, next) => {
     console.log(req.body);
@@ -37,6 +34,9 @@ router.route('/login').post( (req,res, next) => {
             })
         }
     });
+    req.session.isAuthenticated = true
+    console.log(req.isAuthenticated());
+    console.log(req.session)
    });
 //need to add error catching
     router.route('/').post( async (req,res) => {
@@ -59,7 +59,7 @@ router.route('/login').post( (req,res, next) => {
     });
 router.route('/verify').get( (req,res)=> {
     console.log("this is the verification route.");
-    console.log(req.user);
+    console.log(req.session);
     console.log(req.isAuthenticated());
     res.send("connected to verification")
 
