@@ -66,7 +66,7 @@ export default class Quiz extends Component {
                                 <label className='quiz-form-label'>Question amount:</label>
                                 <input id="quiz-form-text" className="quiz-form-text" onChange={this.setSize}></input>
                             </div>
-                            <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
+                            <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}} style={{ textDecoration: 'none' }}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
                         </div>
                     </div>
                 </div> 

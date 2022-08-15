@@ -1,10 +1,11 @@
 .quiz-holder {
     background-color: #252d4a;
     width: 400px;
+    height: 400px;
     min-height: 250px;
     height: min-content;
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: space-evenly;
@@ -55,10 +56,10 @@
     margin-top: 20px;
     margin-bottom: 20px;
     text-transform: uppercase;
-    display: block;
     width: 260px;
     height: 36px;
-    border-radius: 30px;
+    border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
+    text-decoration: none;
 }
