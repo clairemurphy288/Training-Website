@@ -26,10 +26,7 @@ export function Questions (props) {
       } 
 
     },[props.searchedQuestions])
-
-    console.log(props.list)
 let subList = props.list.slice(props.range[0], props.range[1]);
-
 let listItems;
 
 listItems = subList.map((question, index) =>  <Form setQuestions = {props.setQuestions} search={props.search} indexOfAnswer={question.indexOfAnswer} setQuiz={props.setQuiz} quizId = {props.quiz[0]._id} id={question._id} key={question._id} question = {question.question} answerChoices = {question.answerChoices}/>)
@@ -106,6 +103,17 @@ useEffect(() => {
       setBlankQuestion(<AddQuestion setSearch={setSearch} setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
+    // function onFocus(e) {
+    //   console.log("focused")
+    // }
+    function onBlur(e) {
+      console.log("blurred");
+      axios.post("http://localhost:5000/admin/edit-title", {name: e.target.value, query: query} ).then( async (res,req) => {
+        console.log(res.data)
+        })
+        .catch(function (error) {
+  });
+    }
     const mystyles = {
       border: "none",
       display: "inline",
@@ -119,8 +127,7 @@ useEffect(() => {
       <div>
         <NavBar/>
         <div className='container'>
-          <input style={mystyles} className="mb-1" type='text' name='name' defaultValue={quiz[0].name} ></input>
-          {/* <h1>{quiz[0].name}</h1> */}
+          <input onBlur={onBlur} style={mystyles} className="mb-1" type='text' name='name' defaultValue={quiz[0].name} ></input>
           <Query setCount={setCount}  setQuestions = {setQuestions} quizId ={query} setSearch = {setSearch} search={search}/>
           {blankQuestion}
         </div>
