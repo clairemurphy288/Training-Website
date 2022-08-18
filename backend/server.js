@@ -14,6 +14,10 @@ const passport = require('passport');
 LocalStrategy = require('passport-local').Strategy;
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 //salting and hashing passwords
 app.use(session({
     secret: process.env.SECRET,
@@ -24,9 +28,7 @@ app.use(session({
     collectionName: "sessions"})
 }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors({credentials: true, origin: true}));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,15 +46,6 @@ connection.once('open', () => {
 const User = require("./models/user.models");
 
 passport.use(User.createStrategy());
-// passport.serializeUser(function(user, done) {
-//     done(null, user.id); 
-// });
-// passport.deserializeUser(function(id, done) {
-//     User.findById(id, function(err, user) {
-//         done(err, user);
-//     });
-// });
-
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

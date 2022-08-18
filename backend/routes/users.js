@@ -27,7 +27,8 @@ router.route('/login').post( (req,res, next) => {
                     res.send(false);
                 } else {
                     console.log("user autheticated!")
-                    res.send(true)
+                    res.send(true);
+                    // res.redirect("/verify")
                 }
             })(req,res, ()=> {
             })
@@ -55,11 +56,6 @@ router.route('/login').post( (req,res, next) => {
         })
     });
 router.route('/verify').get( (req,res)=> {
-    passport.authenticate("local")(req, res, () =>{
-        console.log(req);
-        res.send(true);
-        console.log("new user added!")
-    })
     console.log("this is the verification route.");
     console.log(req.session);
     console.log(req.user)

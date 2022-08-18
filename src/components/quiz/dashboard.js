@@ -7,12 +7,12 @@ import Navbar from "./navbar/quiznavbar";
 import axios from 'axios'
 
 export default function Dashboard(props) {
-    axios.get("http://localhost:5000/verify", {withCredentials:true}).then(function (res) {
-        console.log(res.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+    // axios.get("http://localhost:5000/verify", {withCredentials:true}).then(function (res) {
+    //     console.log(res.data);
+    //       })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
 
         return (
             <div className='dash-container'>
