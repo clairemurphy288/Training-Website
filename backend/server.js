@@ -2,25 +2,31 @@ require("dotenv").config();
 const express = require('express'); 
 const cors = require('cors');
 const mongoose = require('mongoose');
-const app = express();
 const port = process.env.PORT || 5000;
-app.use(cors());
-app.use(express.json());
+
+
 
 ///passport.js for cookies, sessions, and auth
 const session = require('express-session');
+const MongoStore = require("connect-mongo")
 const passportLocalMongoose = require("passport-local-mongoose")
 const passport = require('passport');
 LocalStrategy = require('passport-local').Strategy;
 
-
+const app = express();
 //salting and hashing passwords
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false, 
-    cookie: {secure: false}
+    cookie: {secure: false, maxAge: 1000*60},
+    store: MongoStore.create({mongoUrl: process.env.ATLAS_URI,
+    collectionName: "sessions"})
 }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({credentials: true, origin: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -37,9 +43,18 @@ connection.once('open', () => {
 
 const User = require("./models/user.models");
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
+// passport.serializeUser(function(user, done) {
+//     done(null, user.id); 
+// });
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id, function(err, user) {
+//         done(err, user);
+//     });
+// });
+
 passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser())
+passport.deserializeUser(User.deserializeUser());
 
 
 

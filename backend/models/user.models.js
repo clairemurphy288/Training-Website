@@ -48,22 +48,8 @@ const userSchema = new Schema({
 
 });
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, {usernameQueryFields: ["email"]});
 
-
-userSchema.statics.authenticate = function (){ 
-    return (username, password, done) => {
-        User.findOne({$or:[{username: username}, {email: username}]}, function  (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false); }
-            if (user) { 
-                user.authenticate(password).then((res) => {
-                    console.log(res)
-                    return done(res.err, res.user)})
-                }
-          });
-        }
-}
 //This variable refers to our collection within our db
 const User = mongoose.model('User', userSchema);
 

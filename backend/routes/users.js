@@ -20,7 +20,6 @@ router.route('/login').post( (req,res, next) => {
             return next(err);
         } else {
             passport.authenticate("local", (err, user, info)=>  {
-                console.log(user)
                 if (err) {
                     return next(err)
                 }
@@ -34,9 +33,7 @@ router.route('/login').post( (req,res, next) => {
             })
         }
     });
-    req.session.isAuthenticated = true
-    console.log(req.isAuthenticated());
-    console.log(req.session)
+
    });
 //need to add error catching
     router.route('/').post( async (req,res) => {
@@ -58,10 +55,14 @@ router.route('/login').post( (req,res, next) => {
         })
     });
 router.route('/verify').get( (req,res)=> {
+    passport.authenticate("local")(req, res, () =>{
+        console.log(req);
+        res.send(true);
+        console.log("new user added!")
+    })
     console.log("this is the verification route.");
     console.log(req.session);
-    console.log(req.isAuthenticated());
-    res.send("connected to verification")
+    console.log(req.user)
 
 })
 router.route('/feed').get( async (req,res) => {
