@@ -8,7 +8,7 @@ router.route('/admin').post( async (req,res) => {
         const title = req.body[1];
         console.log(title);
         let quiz = req.body[0].fileContent;
-        console.log(JSON.stringify(quiz))
+        // console.log(JSON.stringify(quiz))
         quiz = quiz.replace(/\n/g, "").trim();
         quiz = quiz.split("\r");
         const questions = [];
@@ -31,6 +31,10 @@ router.route('/admin').post( async (req,res) => {
         await newQuiz.save();
         console.log("New Quiz Added!");
         res.send("new quiz added!!!!");
+// Adding in the score object for each user associated to this quiz
+        const ScoreObject = {title: title, score: 0}
+        const users = await User.updateMany({}, {$push: {quizScores: ScoreObject}});
+        console.log(users);
         
     } catch (err) {
         res.json('Error' + err);
