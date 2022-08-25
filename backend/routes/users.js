@@ -85,5 +85,15 @@ router.route('/query').post( async (req,res) => {
     } catch (err) {
     }
 });
+
+router.route('/score').get(async(req,res) => {
+    try {
+        const scoreInfo = await User.find();
+        res.send(scoreInfo);
+    } catch (err) {
+        console.log(err);
+        res.status(400).json('Error' + err);
+    }
+});
     
 module.exports = router;

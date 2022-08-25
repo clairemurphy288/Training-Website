@@ -1,8 +1,22 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Navbar from "./navbar/quiznavbar";
 import './score.css';
 
 export default function GetScores() {
+    const [data, setData] = useState([]);
+
+    useEffect(async () => {
+        const data = await axios
+        .get("http://localhost:5000/score")
+        .then(function(response) {
+            return response;
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+        setData(data.data);
+    }, []);
 
     return (
         <div className="scoreboard-body">
