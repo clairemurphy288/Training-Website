@@ -35,6 +35,9 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
+    quizScores : {
+        type: Array
+    },
     timer: {
         type: Boolean,
         default: false
