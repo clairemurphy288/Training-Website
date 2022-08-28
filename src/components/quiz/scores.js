@@ -6,17 +6,26 @@ import './score.css';
 export default function GetScores() {
     const [data, setData] = useState([]);
 
-    useEffect(async () => {
+    useEffect(() => {
+        if(data.length === 0) {
+            console.log(data);
+            getScore()
+         
+        }
+ 
+    }, [data]);
+
+    async function getScore() {
         const data = await axios
         .get("http://localhost:5000/score")
         .then(function(response) {
-            return response;
+            console.log(response.data)
+            setData(response.data[0].quizScores);
         })
         .catch(function(error) {
             console.log(error);
         });
-        setData(data.data);
-    }, []);
+    }
 
     return (
         <div className="scoreboard-body">
