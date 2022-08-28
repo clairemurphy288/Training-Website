@@ -41,7 +41,6 @@ export default class Signin extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        console.log(user);
         let signin;
         await axios.get('http://localhost:5000',{params: user})
         .then(res => {

@@ -86,6 +86,12 @@ router.route('/query').post( async (req,res) => {
     }
 });
 
+/*
+    The score route is meant to both update the curerent user's highscore,
+    and display the scores of the top 10 users for that specific quiz.
+
+*/
+
 router.route('/score').get(async(req,res) => {
     try {
         const scoreInfo = await User.find();

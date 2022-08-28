@@ -8,7 +8,6 @@ export default function GetScores() {
 
     useEffect(() => {
         if(data.length === 0) {
-            console.log(data);
             getScore()
          
         }
@@ -17,7 +16,7 @@ export default function GetScores() {
 
     async function getScore() {
         const data = await axios
-        .get("http://localhost:5000/score")
+        .get("http://localhost:5000/score", {params: localStorage.getItem('currentUser') })
         .then(function(response) {
             console.log(response.data)
             setData(response.data[0].quizScores);

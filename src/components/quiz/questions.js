@@ -56,6 +56,7 @@ export default function GetQuestions() {
                 <div className='question-score-section'>
 					You scored {score} out of {randomArray.length}
 				</div>
+                //after a few seconds navigate to score board
                 ) : (
                     <>
                     <div className="question-question-section">
