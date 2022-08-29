@@ -42,7 +42,7 @@ export default class Signin extends Component {
             password: this.state.password
         }
         let signin;
-        await axios.get('http://localhost:5000',{params: user})
+        await axios.get('http://localhost:' + process.env.PORT,{params: user})
         .then(res => {
             localStorage.setItem('currentUser', res.data[0].username);
             console.log(localStorage.getItem('currentUser'));
