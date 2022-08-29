@@ -97,7 +97,10 @@ router.route('/score').get(async(req,res) => {
         const score = req.query.score
         const user = req.query.currentUser
         const quizName = req.query.quiz
+        
         const scoreInfo = await User.updateOne({$and:[{username: user},{"quizScores.title": quizName}]}, {$max: {"quizScores.$.score": score}});
+        const sortedScores = await User.aggregate([{$unwind: {path: "$quizScores"}}, {$match: {"quizScores.title": quizName}}, {$sort: {"quizScores.score": -1}}])
+        console.log(sortedScores)
         res.send(scoreInfo);
     } catch (err) {
         console.log(err);
