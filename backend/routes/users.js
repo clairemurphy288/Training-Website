@@ -85,5 +85,37 @@ router.route('/query').post( async (req,res) => {
     } catch (err) {
     }
 });
+
+/*
+    The score route is meant to both update the curerent user's highscore,
+    and display the scores of the top 10 users for that specific quiz.
+
+*/
+
+router.route('/score').get(async(req,res) => {
+    try {
+        const score = req.query.score
+        const user = req.query.currentUser
+        const quizName = req.query.quiz
+        
+        const scoreInfo = await User.updateOne(
+            {$and:[{username: user},
+            {"quizScores.title": quizName}]}, 
+            {$max: {"quizScores.$.score": score}});
+
+        const sortedScores = await User.aggregate([{
+            $unwind: {path: "$quizScores"}}, 
+        {$match: {"quizScores.title": quizName}}, 
+        {$sort: {"quizScores.score": -1}}, 
+        {$project: {password: 0, email: 0, typeOfUser: 0, quizDash: 0,
+             timer: 0, maintenancePlan: 0, _id: 0, __v: 0}}]);
+
+        console.log(sortedScores)
+        res.send(scoreInfo);
+    } catch (err) {
+        console.log(err);
+        res.status(400).json('Error' + err);
+    }
+});
     
 module.exports = router;

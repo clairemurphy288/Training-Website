@@ -8,3 +8,11 @@
     /* text-shadow:1px 1px rgba(32, 31, 30, 0.75); */
     cursor: pointer;
 }
+.readme {
+    cursor: pointer;
+    float: right;
+}
+.readme:hover {
+    opacity: .5;
+
+}

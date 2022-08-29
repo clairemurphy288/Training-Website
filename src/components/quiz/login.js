@@ -49,7 +49,7 @@ export default class Login extends Component {
             email: this.state.email
         }
         console.log(user);
-        axios.post('http://localhost:5000',user).then(res => console.log(res.data));
+        axios.post('http://localhost:5000',user).then(res => console.log(res.data)).catch(err => console.log(err));
  
     }
   
@@ -89,8 +89,6 @@ export default class Login extends Component {
                             </div>
                         <button type="submit" className="sign-in-btn-sub">Sign-Up</button>
                         <p className='sign-in-p'>Already have an account? <Link to ="/signin">SIGN IN</Link></p>
-                        <p className='sign-in-p'><Link to="/dashboard">Dashboard</Link></p>
-                        <p className='sign-in-p'><Link to="/questions">Questions</Link></p>
                     </div>
                 </div>
             </form>

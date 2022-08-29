@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Navbar from "./navbar/quiznavbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './quiz.css';
 
 export default class Quiz extends Component {
 
@@ -49,16 +51,25 @@ export default class Quiz extends Component {
     render() {
         const titles = this.state.quizObjectData[1];
         const items = titles.map((object, index) => <option value={index}>{object.name}</option>)
-        return (  
-                <form>
-                <select className="form-select" value={this.state.selected} onChange={this._handleChange}>
-                    {items}
-                </select>
-                <input className="text" onChange={this.setSize}></input>
+        return ( 
                 <div>
-                    <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}}><Button variant="primary" type="submit">SUBMIT</Button></Link>
-                </div>
-                </form>
+                    <Navbar />
+                    <div className='quiz-holder'>
+                        <div className='quiz-selector-section'>
+                            <div>
+                                <label className='quiz-form-label'>Choose a quiz:</label>
+                                <select className="form-select" id='quiz-form-select' value={this.state.selected} onChange={this._handleChange}>
+                                    {items}
+                                </select>
+                            </div>
+                            <div>
+                                <label className='quiz-form-label'>Question amount:</label>
+                                <input id="quiz-form-text" className="quiz-form-text" onChange={this.setSize}></input>
+                            </div>
+                            <Link to="/questions" state={{quiz: this.state.quizObjectData[1][this.state.selected], size: this.state.size}} style={{ textDecoration: 'none' }}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
+                        </div>
+                    </div>
+                </div> 
         );
     }
 }

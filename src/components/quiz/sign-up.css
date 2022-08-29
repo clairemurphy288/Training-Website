@@ -30,7 +30,7 @@ form i {
  .sign-in-form-label {
     box-sizing: border-box;
     display: block;
-    width: 260px;
+    width: 100%;
     margin: 25px auto 0;
     text-align: center;
 }
@@ -48,6 +48,7 @@ form i {
 }
 
 .sign-in-holder {
+    justify-content: center;
     box-sizing: border-box;
     border-radius: 15px;
     background-color: #fefefe;
@@ -59,9 +60,11 @@ form i {
 .sign-in-container {
     box-sizing: border-box;
     padding: 1em;
+    justify-content: center;
 }
 
 .sign-in-btn-sub {
+    position: relative;
     box-sizing: border-box;
     margin-top: 40px;
     margin: 25px auto 0;
@@ -69,9 +72,9 @@ form i {
     background: #028482;
     text-transform: uppercase;
     display: block;
-    width: 260px;
+    width: 100%;
     height: 36px;
-    border-radius: 30px;
+    border-radius: 10px;
     color: #fff;
     font-size: 15px;
     cursor: pointer;

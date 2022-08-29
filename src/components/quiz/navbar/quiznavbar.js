@@ -1,40 +1,23 @@
-import React, { Component } from "react";
-import { MenuItems } from "./MenuItems";
-import { Button } from "./button";
-import './quiznavbar.css';
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-</svg>
-
-class Quiznavbar extends Component {
-    state = { clicked: false }
-
-    handleClick = () => {
-        this.setState({ clicked: !this.state.clicked})
-    }
-
-    render() {
-        return(
-            <nav className="NavbarItems">
-                <h1 className="navbar-logo">Heraeus</h1>
-                <div className="menu-icon" onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'bi bi-x' : 'bi bi-list'}></i>
-                </div>
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-                    {MenuItems.map((item, index) => {
-                        return (
-                            <li key={index}>
-                                <a className={item.cName} href={item.url}>
-                                    {item.title}
-                                </a>
-                            </li>
-                        )
-                    })}
-                </ul>
-                <Button>Sign Up</Button>
-            </nav>
-        )
-    }
+import {Link} from 'react-router-dom';
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+export default function NavBar(props) {
+    return(
+      <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'lightblue' }}>
+      <div class="container-fluid">
+          <a href="/dashboard" class="navbar-brand">Heraeus</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse9">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse9">
+              <div class="navbar-nav">
+                  <a href="/dashboard" class="nav-item nav-link active">Home</a>
+                  <a href="/quiz" class="nav-item nav-link">Quiz</a>
+                  <a href='/scores' class="nav-item nav-link">Scores</a>
+              </div>
+              <form class="d-flex ms-auto">
+                  <Link to ="/signin"><button type="submit" class="btn btn-outline-light">LOGOUT</button></Link>
+              </form>
+          </div>
+      </div>        
+  </nav>)
 }
-
-export default Quiznavbar

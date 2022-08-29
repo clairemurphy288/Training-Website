@@ -1,37 +1,25 @@
-/* body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ededed;
-    margin: 0em;
-    box-sizing: border-box;
-    color: black;
-} */
-
-/* * {
-    box-sizing: border-box;
-    color: black;
-} */
-
-.jumbo {
-    margin-top: -4.5em;
-    width: auto;
-    height: 60%;
-    background-color: #028482;
-    text-align: center;
-}
-
-.jumbo h1 {
-    color: #fff;
-    font-size: 64px;
-}
-
 .quiz-card {
-    background-color: aqua;
+    background-color: #252d4a;
     width: auto;
-    height: auto;
+    height: min-content;
+    border-radius: 15px;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    box-sizing: border-box;
 }
 
 .time-management-card {
-    background-color: red;
+    background-color: #252d4a;
     width: auto;
-    height: auto;
+    height: min-content;
+    border-radius: 15px;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    box-sizing: border-box;
 }

@@ -10,7 +10,8 @@ import Signin from "./components/quiz/signin";
 import Dashboard from "./components/quiz/dashboard";
 import Quiz from "./components/quiz/quiz";
 import Questions from "./components/quiz/questions";
-
+import AddTimer from "./components/admin-page/TimeStudy/AddTimer.js";
+import Scores from "./components/quiz/scores"
 function App() {
   return (
     <Router>
@@ -23,6 +24,8 @@ function App() {
       <Route path="/dashboard" element = {<Dashboard/>}/>
       <Route path="/quiz" element = {<Quiz/>}/>
       <Route path="/questions" element = {<Questions/>}/>
+      <Route path="/add-timer" element={<AddTimer/>}/>
+      <Route path="/scores" element={<Scores/>}/>
       </Routes>
     </Router>
  
