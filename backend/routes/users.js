@@ -94,7 +94,10 @@ router.route('/query').post( async (req,res) => {
 
 router.route('/score').get(async(req,res) => {
     try {
-        const scoreInfo = await User.find();
+        const score = req.query.score
+        const user = req.query.currentUser
+        const quizName = req.query.quiz
+        const scoreInfo = await User.updateOne({$and:[{username: user},{"quizScores.title": quizName}]}, {$max: {"quizScores.$.score": score}});
         res.send(scoreInfo);
     } catch (err) {
         console.log(err);

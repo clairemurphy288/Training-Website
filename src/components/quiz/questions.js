@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './question.css';
 import {useLocation} from 'react-router-dom';
-import { Questions } from "../admin-page/Edit";
+import { useNavigate } from 'react-router-dom';
 
 export default function GetQuestions() {
     //BUG: if stateQuiz is null the page does render!!! IDEA: make a conditional that redirect to previous page
     //Also could be caused if they dont choose the size of their quiz
     const location = useLocation();
     const  stateQuiz  = location.state;
+
+    const navigate = useNavigate();
 
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
@@ -43,12 +43,21 @@ export default function GetQuestions() {
         } else {
             if(choice === randomArray[questionNumber].answerChoices[id]){
                 setScore(score + 1);
-                setShowScore(true);
+                setShowScore(true, setTimeout(()=> {
+                    onLoad()
+                }, 2000));
             } else {
-                setShowScore(true);
+                setShowScore(true, setTimeout(()=> {
+                    onLoad()
+                }, 2000));
             }
         }
              
+    }
+    function onLoad() {
+        console.log("triggered");
+        navigate("/scores", {state: {score: score, quiz: stateQuiz.quiz.name}})
+
     }
     return (
         <div className="question-app">
