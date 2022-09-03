@@ -109,9 +109,7 @@ router.route('/score').get(async(req,res) => {
         {$sort: {"quizScores.score": -1}}, 
         {$project: {password: 0, email: 0, typeOfUser: 0, quizDash: 0,
              timer: 0, maintenancePlan: 0, _id: 0, __v: 0}}]);
-
-        console.log(sortedScores)
-        res.send(scoreInfo);
+        res.send(sortedScores);
     } catch (err) {
         console.log(err);
         res.status(400).json('Error' + err);
