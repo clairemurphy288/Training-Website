@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
+let {Quiz} = require("../models/quiz.models");
 
 
 router.route('/').get( async(req,res) => {
@@ -31,10 +32,22 @@ router.route('/').get( async(req,res) => {
 
     router.route('/').post( async (req,res) => {
         try {
+            const quizzes = await Quiz.find();
+            const quizScores = [];
+            for (let i = 0; i < quizzes.length; i++) {
+                let score = {
+                    title: quizzes[i].name,
+                    score: 0
+                }
+                quizScores.push(score);
+
+            }
+
             const newUser = User({
                 username: req.body.username,
                 password: req.body.password,
-                email: req.body.email
+                email: req.body.email,
+                quizScores: quizScores
             });
             //this function saves the users to our database
             await newUser.save();

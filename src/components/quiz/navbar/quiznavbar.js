@@ -1,6 +1,10 @@
 import {Link} from 'react-router-dom';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 export default function NavBar(props) {
+    function logOut(e) {
+        console.log("logOut");
+        // <Link to ="/signin">
+    }
     return(
       <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'lightblue' }}>
       <div class="container-fluid">
@@ -15,7 +19,7 @@ export default function NavBar(props) {
                   <a href='/scores' class="nav-item nav-link">Scores</a>
               </div>
               <form class="d-flex ms-auto">
-                  <Link to ="/signin"><button type="submit" class="btn btn-outline-light">LOGOUT</button></Link>
+                  <button onClick={logOut} type="submit" class="btn btn-outline-light">LOGOUT</button>
               </form>
           </div>
       </div>        
