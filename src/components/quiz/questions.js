@@ -42,10 +42,12 @@ export default function GetQuestions() {
             } 
         } else {
             if(choice === randomArray[questionNumber].answerChoices[id]){
-                setScore(score + 1);
-                setShowScore(true, setTimeout(()=> {
-                    onLoad()
-                }, 2000));
+                setScore(score + 1, () => {
+                    setShowScore(true, setTimeout(()=> {
+                        onLoad()
+                    }, 2000));
+                });
+              
             } else {
                 setShowScore(true, setTimeout(()=> {
                     onLoad()
