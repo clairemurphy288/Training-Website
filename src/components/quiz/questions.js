@@ -29,6 +29,14 @@ export default function GetQuestions() {
         return arr;
     }
 
+    useEffect(() => {
+        if (showScore) {
+            setTimeout(()=> {
+                onLoad()
+            }, 2000)
+        }
+    }, [showScore, score])
+
     function handleAnswerButtonClick(choice) {
         let id = randomArray[questionNumber].indexOfAnswer;
         if(questionNumber < stateQuiz.size-1) {
@@ -42,16 +50,11 @@ export default function GetQuestions() {
             } 
         } else {
             if(choice === randomArray[questionNumber].answerChoices[id]){
-                setScore(score + 1, () => {
-                    setShowScore(true, setTimeout(()=> {
-                        onLoad()
-                    }, 2000));
-                });
+                setScore(score + 1);
+                setShowScore(true);
               
             } else {
-                setShowScore(true, setTimeout(()=> {
-                    onLoad()
-                }, 2000));
+                setShowScore(true);
             }
         }
              
