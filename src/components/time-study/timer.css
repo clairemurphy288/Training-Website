@@ -1,0 +1,46 @@
+.timer-body {
+    background-color: #B8A8F0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container1 {
+    display: flex;
+    width: 60%;
+    min-height: 50vh;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 24px;
+    background-color: white;
+    gap: 10px;
+
+
+}
+
+/* Timer */
+h1 {
+    font-family: 'Edu SA Beginner', cursive;
+    color: white;
+    font-size: 3rem;
+}
+#timer {
+    margin: 0;
+}
+.timer-box {
+    text-align: center;
+    background: #785be6;
+    background: linear-gradient(321deg, rgba(120,91,230,1) 0%, rgba(164,126,236,1) 74%); 
+    width: 75%;
+    padding: 3% 2%;
+    border-radius: 24px;
+}
+
+.btn-1 {
+    position: absolute;
+    bottom: 20%;
+    background-color: #785be6;
+} 
