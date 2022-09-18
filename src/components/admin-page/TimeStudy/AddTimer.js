@@ -7,16 +7,13 @@ export default function AddTimer(props) {
     let process = useRef([{
         delete: <div></div>,
         text: <textarea placeholder="" className="form-control textarea-timer"></textarea>, 
-        button: <button onClick={onClick} className="btn btn-dark mt-2">+</button>
     }]);
     const [updatedList, setList] = useState(process.current);
     function onClick(e) {
         let newArray = [...process.current];
-        delete newArray[newArray.length - 1].button;
         newArray.push({
             delete: <div></div>,
-            text: <textarea placeholder="" className="form-control textarea-timer"></textarea>, 
-            button:<button onClick={onClick} className="btn btn-dark mt-2">+</button>
+            text: <textarea placeholder="" className="form-control textarea-timer"></textarea>
     });
     process.current = newArray;
     setList(process.current);
@@ -39,11 +36,12 @@ export default function AddTimer(props) {
             <input className="form-control mb-2"></input>
             <div>{updatedList.map((item, index) =>  {
                 return <div  className="mb-2">
-                    <div onBlur={()=> {{textOnBlur({item})}}} onFocus={() => {textOnFocus({item})}} className='d-flex justify-content-center align-items-center textarea-timer'>{item.text}
+                    <div onBlur={()=> {{textOnBlur({item})}}} onFocus={() => {textOnFocus({item})}} className='d-flex justify-content-center align-items-center textarea-timer'>
+                    {item.text}
                     {item.delete}</div>
-                    {item.button}
                     </div>})}
             </div>
+            <button onClick={onClick} className="btn btn-dark mt-2">+</button>
         </div>
     )
 }
