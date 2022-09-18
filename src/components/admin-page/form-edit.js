@@ -90,7 +90,6 @@ function Answer(props) {
             setClick(true);
             props.setAnswer(props.index);
             setStyle("select " + style);
-            console.log(style)
 
         }
     }
