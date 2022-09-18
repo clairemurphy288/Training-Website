@@ -84,9 +84,9 @@ export default function Timer(props) {
                 </div>  
                 <div className="d-flex justify-content-center mb-2">
                     
-                    <button onClick={startTimer}  className="btn btn-lg  btn-dark mx-1">start</button>
+                    <button onClick={startTimer}  className="btn btn-lg  btn-primary mx-1">start</button>
                     <button onClick={pauseTimer} className="btn btn-lg btn-dark mx-1">{pause}</button>
-                    <button onClick={stopTimer} className="btn btn-lg btn-dark mx-1">stop</button>
+                    <button onClick={stopTimer} className="btn btn-lg btn-danger mx-1">stop</button>
                 </div>
                 
             </div>

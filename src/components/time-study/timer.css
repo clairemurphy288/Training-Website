@@ -1,5 +1,5 @@
 .timer-body {
-    background-color: #B8A8F0;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,18 +22,17 @@
 }
 
 /* Timer */
-h1 {
+#timer {
+    margin: 0;
     font-family: 'Edu SA Beginner', cursive;
     color: white;
     font-size: 3rem;
 }
-#timer {
-    margin: 0;
-}
 .timer-box {
     text-align: center;
-    background: #785be6;
-    background: linear-gradient(321deg, rgba(120,91,230,1) 0%, rgba(164,126,236,1) 74%); 
+    background: #76a6fb;
+    /* background: linear-gradient(321deg, rgba(120,91,230,1) 0%, rgba(164,126,236,1) 74%);  */
+    
     width: 75%;
     padding: 3% 2%;
     border-radius: 24px;

@@ -16,3 +16,13 @@
     opacity: .5;
 
 }
+.textarea-timer {
+    display: inline;
+}
+.bi-x {
+    font-size: 2rem;
+}
+.timer-header {
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+}
