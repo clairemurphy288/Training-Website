@@ -16,6 +16,7 @@ export default function Items (props) {
 
     function handleRemove(id) {
         const newList = quizzes.filter((quiz) => quiz._id != id);
+        //what is this doing?
         axios.post("http://localhost:5000/admin/quiz/delete", {_id: id}).then(function (response) {
             console.log(response.data);
           
