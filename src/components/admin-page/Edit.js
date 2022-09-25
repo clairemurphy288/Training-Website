@@ -103,9 +103,6 @@ useEffect(() => {
       setBlankQuestion(<AddQuestion setSearch={setSearch} setList={setList} setCount={setCount} getResponse={getResponse} addQuestion={addQuestion} _id={query} setBlankQuestion={setBlankQuestion}/>)
 
     }
-    // function onFocus(e) {
-    //   console.log("focused")
-    // }
     function onBlur(e) {
       console.log("blurred");
       axios.post("http://localhost:5000/admin/edit-title", {name: e.target.value, query: query} ).then( async (res,req) => {

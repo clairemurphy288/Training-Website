@@ -22,13 +22,8 @@ export default class LiveQuiz extends Component {
             this.setState({
                 quizObjectData:  this.props.createdQuizzes
             })
-        } 
-     
-      
-    
+        }
     }
- 
- 
     async componentDidMount () {
         let resData;
         await axios.get("http://localhost:5000/admin/quiz").then(function (response) {

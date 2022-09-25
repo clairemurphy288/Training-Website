@@ -35,6 +35,9 @@ app.use('/', quizRouter);
 const adminRouter = require(__dirname + '/routes/admin');
 app.use('/', adminRouter);
 
+const adminTimerRouter = require(__dirname + '/routes/admin-timer');
+app.use('/', adminTimerRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
