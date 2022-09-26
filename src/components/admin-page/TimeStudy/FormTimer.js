@@ -1,29 +1,30 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useRef } from "react";
-import { NavItem } from 'react-bootstrap';
-import { components } from 'react-select';
+import axios from 'axios';
 export default function FormTimer(props) {
     const textInput = useRef("");
     const [icon, setIcon] = useState("");
 
+
     function onFocus(e) {
         setIcon("bi bi-x")
     }
-    function onDelete(e) {
+    async function onDelete(e) {
+        await axios.delete('http://localhost:5000/step', {data: {_id: props.item._id, timerId: props.timerId}}  ).then(res => {
+           }).catch(err => console.log(err));
+        props.getNewProcess();
     }
-    function onBlur(e) {
+    async function onBlur(e) {
         setIcon("");
-    }
-    function onChange(e) {
-
-
+        await axios.put('http://localhost:5000/step',  {_id: props.item._id, text: textInput.current.value}).then(res => {
+           }).catch(err => console.log(err));
     }
 
     return (
         <div className="mb-2">
             <div className='d-flex justify-content-center align-items-center textarea-timer'>
-                <textarea onChange={onChange}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
+                <textarea className='form-control' ref = {textInput}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
                 <i onMouseDown = {onDelete} className={icon}></i>
             </div>
         </div>

@@ -65,7 +65,6 @@ router.route('/admin/edit').post(async (req,res) => {
 });
 //this will edit a specific question and it's answer choices
 router.route('/admin/edit/quiz').post(async (req,res) => {
-    console.log(req.body);
     const question = new ObjectId(req.body.id);
     await Quiz.updateOne({'questions._id':question }, {$set: 
         { 'questions.$.question' : req.body.question }});

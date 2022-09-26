@@ -8,10 +8,16 @@ import axios from 'axios';
 export default function AddTimer(props) {
     const location = useLocation();
     const  timer  = location.state;
-    const [process, setProcess] = useState(timer.process);
+    const [process, setProcess] = useState([]);
+
+    useEffect(() => {
+        getNewProcess()
+
+    }, [])
 
     async function getNewProcess() {
         await axios.get('http://localhost:5000/step', {params: {_id: timer._id}}).then(res => {
+            console.log(res.data)
             setProcess(res.data);
            }).catch(err => console.log(err));
     }
@@ -23,7 +29,7 @@ export default function AddTimer(props) {
 
     }
     const list = process.map((item, index) =>  {
-        return <FormTimer  item = {item}  key = {item._id}/>})
+        return <FormTimer getNewProcess = {getNewProcess} timerId = {timer._id}  item = {item}  key = {item._id}/>})
 
     return(
         <div className="container text-center">

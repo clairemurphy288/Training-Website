@@ -20,7 +20,7 @@ export default function TimerHomePage(props) {
         e.preventDefault();
         await axios.post('http://localhost:5000/timer', {title: title}).then(res => {
            }).catch(err => console.log(err));
-           getTimer()
+           getTimer();
 
     }
     function onChange(e) {
@@ -28,8 +28,6 @@ export default function TimerHomePage(props) {
 
     }
     async function handleRemove(id) {
-        console.log(id);
-
         await axios.delete('http://localhost:5000/timer', {data: {_id: id}}).then(res => {
            }).catch(err => console.log(err));
            getTimer()

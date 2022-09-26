@@ -14,11 +14,13 @@ router.route('/timer')
         process: [step]
     });
     await newTimer.save();
+    res.send("valid request")
 }).get(async (req,res) => {
     const val = await Timer.find();;
     res.send(val);
 }).delete( async (req, res) => {
     await Timer.deleteOne({_id: new ObjectId(req.body._id)});
+    res.send("valid request");
 });
 
 router.route('/step')
@@ -33,12 +35,26 @@ router.route('/step')
     //add  a step
     console.log(req.body._id);
     const process = await Timer.updateOne({_id: req.body._id}, {$push: {process: {stepName: ""}}});
-    console.log(process)
+    res.send("valid request")
 }).put(async (req, res) => {
-    //update a step 
+        //update a step 
+    const _id = req.body._id;
+    const step = req.body.text
+    const val = await Timer.updateOne({'process._id': _id},{$set: {"process.$.stepName": step}});
+    res.send("connected to backend")
 
 }).delete( async (req, res) => {
+    const timerId = new ObjectId(req.body.timerId);
+    const _id = new ObjectId(req.body._id);
+    const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
+    console.log(val);
+    res.send("connected to backend")
     //delete a step
+    // const quiz = new ObjectId(req.body.quizId)
+    // const questionForDeletion = new ObjectId(req.body.id);
+    // const delete1 = await Quiz.updateOne({_id: quiz}, {$pull: {
+    //     questions: {_id: questionForDeletion}
+    // }});
 })
 
 module.exports = router;
