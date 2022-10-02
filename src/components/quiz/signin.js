@@ -70,7 +70,7 @@ export default class Signin extends Component {
     }
     async testingServer(e) {
         let val
-        await axios.get('http://localhost:5000/test',{params: user})
+        await axios.get('http://localhost:5000/test')
         .then(res => {
             val = res.data;
         }
