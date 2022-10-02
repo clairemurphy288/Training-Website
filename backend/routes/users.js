@@ -3,7 +3,9 @@ let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
 let {Quiz} = require("../models/quiz.models");
 
-
+router.route("/test").get(async (req,res)=> {
+    res.send("the server is connected!")
+})
 router.route('/').get( async(req,res) => {
     try {
         console.log(req.query);

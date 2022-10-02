@@ -13,12 +13,14 @@ export default class Signin extends Component {
             username: "",
             password: "",
             validSignin: false,
-            passwordVisibility: "password"
+            passwordVisibility: "password",
+            serverValid: "the server needs to be tested"
          }
          this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.changeIcon = this.changeIcon.bind(this);
+        this.testingServer = this.testingServer.bind(this);
    
     }
 
@@ -42,7 +44,7 @@ export default class Signin extends Component {
             password: this.state.password
         }
         let signin;
-        await axios.get('http://localhost:' + process.env.PORT ,{params: user})
+        await axios.get('http://localhost:5000',{params: user})
         .then(res => {
             localStorage.setItem('currentUser', res.data[0].username);
             console.log(localStorage.getItem('currentUser'));
@@ -66,6 +68,19 @@ export default class Signin extends Component {
             password: ""
         });
     }
+    async testingServer(e) {
+        let val
+        await axios.get('http://localhost:5000/test',{params: user})
+        .then(res => {
+            val = res.data;
+        }
+        );
+        this.setState({
+            serverValid: val
+
+        })
+
+    }
 
     render() {
         if(this.state.validSignin){
@@ -75,7 +90,7 @@ export default class Signin extends Component {
             <form onSubmit = {this.onSubmit}>
                 <div class="sign-in-holder">
                     <div className="sign-in-container">
-                        <h2 className='sign-in-heading'>TESTING AUTOMATIC DEPLOYMENT</h2>
+                        <h2 className='sign-in-heading'>LOGIN</h2>
 
                             <div className="sign-in-field">
                                 <label htmlFor="exampleInputusername" className="sign-in-form-label">USERNAME</label>
@@ -91,6 +106,8 @@ export default class Signin extends Component {
                         <button type="submit" className="sign-in-btn-sub">login</button>
                         <p className='sign-in-p'>Don't have an account? <Link to ="/">SIGN UP</Link></p>
                     </div>
+                    <button onClick = {testingServer}>TEST THE SERVER</button>
+                    <h1>this.state.serverValid</h1>
                 </div>
             </form>
 
