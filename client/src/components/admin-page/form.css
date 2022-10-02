@@ -1,0 +1,19 @@
+
+.select {
+    color: green;
+    margin: 10px;
+}
+.select:focus {
+    color:green;
+}
+
+h6{
+    display: block;
+}
+.questionDeletion {
+   position :absolute;
+   right: 5px;
+}
+input {
+    display: block;
+}
