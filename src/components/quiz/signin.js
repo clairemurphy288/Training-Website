@@ -70,7 +70,7 @@ export default class Signin extends Component {
     }
     async testingServer(e) {
         let val
-        await axios.get('http://localhost:5000/test')
+        await axios.get('/test')
         .then(res => {
             val = res.data;
         }
@@ -107,7 +107,7 @@ export default class Signin extends Component {
                         <p className='sign-in-p'>Don't have an account? <Link to ="/">SIGN UP</Link></p>
                     </div>
                     <button onClick = {this.testingServer}>TEST THE SERVER</button>
-                    <h1>this.state.serverValid</h1>
+                    <h1>{this.state.serverValid}</h1>
                 </div>
             </form>
 
