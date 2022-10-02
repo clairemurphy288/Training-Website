@@ -106,7 +106,7 @@ export default class Signin extends Component {
                         <button type="submit" className="sign-in-btn-sub">login</button>
                         <p className='sign-in-p'>Don't have an account? <Link to ="/">SIGN UP</Link></p>
                     </div>
-                    <button onClick = {testingServer}>TEST THE SERVER</button>
+                    <button onClick = {this.testingServer}>TEST THE SERVER</button>
                     <h1>this.state.serverValid</h1>
                 </div>
             </form>
