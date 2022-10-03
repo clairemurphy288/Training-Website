@@ -27,17 +27,17 @@ connection.once('open', () => {
 
 ///Router for the root path
 const userRouter = require(__dirname + '/routes/users');
-app.use('/', userRouter);
+app.use('/api/v1', userRouter);
 ////
 
 const quizRouter = require(__dirname + '/routes/quizzes');
-app.use('/', quizRouter);
+app.use('/api/v1', quizRouter);
 
 const adminRouter = require(__dirname + '/routes/admin');
-app.use('/', adminRouter);
+app.use('/api/v1', adminRouter);
 
 const adminTimerRouter = require(__dirname + '/routes/admin-timer');
-app.use('/', adminTimerRouter);
+app.use('/api/v1', adminTimerRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "/client/build")));
@@ -45,6 +45,10 @@ if (process.env.NODE_ENV === "production") {
     app.get("*", (req,res) => {
         res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 
+    })
+} else {
+    app.get("/server", (req,res) => {
+        res.send("api is running")
     })
 }
 

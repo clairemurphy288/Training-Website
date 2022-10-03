@@ -91,7 +91,7 @@ useEffect(() => {
 }, [count]);
 
      const getResponse = async ()=> {
-      await axios.post("http://localhost:5000/admin/edit", {query: query}).then( async (response) => {
+      await axios.post("/api/v1/edit", {query: query}).then( async (response) => {
           let ResData = await response.data;
           setQuiz(ResData)
           })
@@ -105,7 +105,7 @@ useEffect(() => {
     }
     function onBlur(e) {
       console.log("blurred");
-      axios.post("http://localhost:5000/admin/edit-title", {name: e.target.value, query: query} ).then( async (res,req) => {
+      axios.post("/api/v1/admin/edit-title", {name: e.target.value, query: query} ).then( async (res,req) => {
         console.log(res.data)
         })
         .catch(function (error) {

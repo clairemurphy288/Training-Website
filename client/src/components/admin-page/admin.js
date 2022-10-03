@@ -23,11 +23,11 @@ export default class Admin extends Component {
         e.preventDefault();
         const title = this.state.titleOfQuiz;
         const csv = this.state.fileContent;
-           await axios.post('http://localhost:5000/admin', [csv, title]).then(res => {
+           await axios.post('/api/v1/admin', [csv, title]).then(res => {
             console.log(res.data);
 
            }).catch(err => console.log(err));
-           await axios.get("http://localhost:5000/admin/quiz").then(function (response) {
+           await axios.get("/api/v1/admin/quiz").then(function (response) {
             console.log("fetched quiz array")
             resData = response.data;
         

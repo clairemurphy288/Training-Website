@@ -16,14 +16,14 @@ export default function AddTimer(props) {
     }, [])
 
     async function getNewProcess() {
-        await axios.get('http://localhost:5000/step', {params: {_id: timer._id}}).then(res => {
+        await axios.get('/api/v1/step', {params: {_id: timer._id}}).then(res => {
             console.log(res.data)
             setProcess(res.data);
            }).catch(err => console.log(err));
     }
 
     async function onClick(e) {
-        await axios.post('http://localhost:5000/step', {_id: timer._id}).then(res => {
+        await axios.post('/api/v1/step', {_id: timer._id}).then(res => {
            }).catch(err => console.log(err));
            getNewProcess();
 

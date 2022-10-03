@@ -10,7 +10,7 @@ export default function Query(props) {
         props.setSearch(e.target.value);
     }
     async function onSubmit(e) {
-        await axios.post("http://localhost:5000/admin/quiz/query", {search: props.search, _id: props.quizId}).then( async (response) => {
+        await axios.post("/api/v1/admin/quiz/query", {search: props.search, _id: props.quizId}).then( async (response) => {
                 console.log(response.data);
                 props.setQuestions(response.data)
                 props.setCount(0);

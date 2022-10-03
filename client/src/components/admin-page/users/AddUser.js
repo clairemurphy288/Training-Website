@@ -25,7 +25,7 @@ export default function AddUser(props) {
             maintenancePlan: maintenance,
             typeOfUser: selected
         }
-        await axios.post('http://localhost:5000/admin/add-user', {user: user}).then(async (res) => {
+        await axios.post('/api/v1/admin/add-user', {user: user}).then(async (res) => {
             console.log(res.data);
         } ).catch(err => console.log(err));
         props.getUsers();

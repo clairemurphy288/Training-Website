@@ -11,14 +11,14 @@ export default function TimerHomePage(props) {
     }, [])
 
     async function getTimer() {
-        await axios.get('http://localhost:5000/timer').then(res => {
+        await axios.get('/api/v1/timer').then(res => {
             setTimers(res.data)
            }).catch(err => console.log(err));
 
     }
     async function onSubmit(e) {
         e.preventDefault();
-        await axios.post('http://localhost:5000/timer', {title: title}).then(res => {
+        await axios.post('/api/v1/timer', {title: title}).then(res => {
            }).catch(err => console.log(err));
            getTimer();
 
@@ -28,7 +28,7 @@ export default function TimerHomePage(props) {
 
     }
     async function handleRemove(id) {
-        await axios.delete('http://localhost:5000/timer', {data: {_id: id}}).then(res => {
+        await axios.delete('/api/v1/timer', {data: {_id: id}}).then(res => {
            }).catch(err => console.log(err));
            getTimer()
     }

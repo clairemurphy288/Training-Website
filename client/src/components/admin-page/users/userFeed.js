@@ -33,7 +33,7 @@ export default function UserFeed() {
       }, [count]);
 
     async function getUsers() {
-        await axios.get('http://localhost:5000/feed').then(async (res) => {
+        await axios.get('/api/v1/feed').then(async (res) => {
             const data = await res.data
             setUsers(data);} ).catch(err => console.log(err));
 
@@ -100,13 +100,13 @@ export function User(props) {
             maintenancePlan: maintenance,
             typeOfUser: selected
         }
-        await axios.post('http://localhost:5000/feed', [user, props._id]).then(async (res) => {
+        await axios.post('/api/v1/feed', [user, props._id]).then(async (res) => {
             console.log(res.data);
         } ).catch(err => console.log(err));
         
     }
     async function onClick(e) {
-        await axios.post('http://localhost:5000/delete', {_id: props._id}).then(async (res) => {
+        await axios.post('/api/v1/delete', {_id: props._id}).then(async (res) => {
             console.log(res.data);
         } ).catch(err => console.log(err));
         props.getUsers();

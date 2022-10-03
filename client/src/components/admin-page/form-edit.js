@@ -10,10 +10,10 @@ export default function Form(props) {
     const [question, setQuestion] = useState(props.question)
     const [selectedAnswer, setAnswer] = useState(props.indexOfAnswer);
     async function onClick() {
-        await axios.post('http://localhost:5000/admin/edit/question-delete', { quizId: props.quizId, id: props.id}).then(async res => {
+        await axios.post('/api/v1/admin/edit/question-delete', { quizId: props.quizId, id: props.id}).then(async res => {
             props.setQuiz(res.data);
            }).catch(err => console.log(err));
-        await axios.post("http://localhost:5000/admin/quiz/query", {search: props.search, _id: props.quizId}).then( async (response) => {
+        await axios.post("/api/v1/admin/quiz/query", {search: props.search, _id: props.quizId}).then( async (response) => {
             console.log(response.data);
             props.setQuestions(response.data)
         })
@@ -26,7 +26,7 @@ export default function Form(props) {
     async function onSubmit(e) {
         e.preventDefault();
         console.log(question)
-        await axios.post('http://localhost:5000/admin/edit/quiz', {indexOfAnswer: selectedAnswer, quizId: props.quizId, question: question, data: data, id: props.id}).then(async res => {
+        await axios.post('/api/v1/admin/edit/quiz', {indexOfAnswer: selectedAnswer, quizId: props.quizId, question: question, data: data, id: props.id}).then(async res => {
             console.log(res.data);
 
            }).catch(err => console.log(err));

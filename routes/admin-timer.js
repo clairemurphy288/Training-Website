@@ -49,12 +49,6 @@ router.route('/step')
     const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
     console.log(val);
     res.send("connected to backend")
-    //delete a step
-    // const quiz = new ObjectId(req.body.quizId)
-    // const questionForDeletion = new ObjectId(req.body.id);
-    // const delete1 = await Quiz.updateOne({_id: quiz}, {$pull: {
-    //     questions: {_id: questionForDeletion}
-    // }});
 })
 
 module.exports = router;

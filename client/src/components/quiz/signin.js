@@ -44,13 +44,15 @@ export default class Signin extends Component {
             password: this.state.password
         }
         let signin;
-        await axios.get('http://localhost:5000',{params: user})
+        await axios.get('/api/v1',{params: user})
         .then(res => {
             localStorage.setItem('currentUser', res.data[0].username);
             console.log(localStorage.getItem('currentUser'));
             signin = res.data[1];
         }
-        );
+        ).catch(err => {
+            console.log(err);
+        });
         this.setState( {
             validSignin: signin
         });   
@@ -70,9 +72,10 @@ export default class Signin extends Component {
     }
     async testingServer(e) {
         let val
-        await axios.get('/test')
+        await axios.get('/api/v1/test')
         .then(res => {
             val = res.data;
+            console.log(val);
         }
         );
         this.setState({
@@ -87,6 +90,7 @@ export default class Signin extends Component {
            return <Navigate to ="/dashboard" />
         }
         return (
+            <div>
             <form onSubmit = {this.onSubmit}>
                 <div class="sign-in-holder">
                     <div className="sign-in-container">
@@ -106,10 +110,12 @@ export default class Signin extends Component {
                         <button type="submit" className="sign-in-btn-sub">login</button>
                         <p className='sign-in-p'>Don't have an account? <Link to ="/">SIGN UP</Link></p>
                     </div>
-                    <button onClick = {this.testingServer}>TEST THE SERVER</button>
-                    <h1>{this.state.serverValid}</h1>
+                  
                 </div>
             </form>
+              <button onClick = {this.testingServer}>TEST THE SERVER</button>
+              <h1>{this.state.serverValid}</h1>
+              </div>
 
         );
     }

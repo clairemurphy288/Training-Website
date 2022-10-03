@@ -11,13 +11,13 @@ export default function FormTimer(props) {
         setIcon("bi bi-x")
     }
     async function onDelete(e) {
-        await axios.delete('http://localhost:5000/step', {data: {_id: props.item._id, timerId: props.timerId}}  ).then(res => {
+        await axios.delete('/api/v1/step', {data: {_id: props.item._id, timerId: props.timerId}}  ).then(res => {
            }).catch(err => console.log(err));
         props.getNewProcess();
     }
     async function onBlur(e) {
         setIcon("");
-        await axios.put('http://localhost:5000/step',  {_id: props.item._id, text: textInput.current.value}).then(res => {
+        await axios.put('/api/v1/step',  {_id: props.item._id, text: textInput.current.value}).then(res => {
            }).catch(err => console.log(err));
     }
 

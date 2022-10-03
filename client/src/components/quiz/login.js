@@ -49,7 +49,7 @@ export default class Login extends Component {
             email: this.state.email
         }
         console.log(user);
-        axios.post('http://localhost:5000',user).then(res => console.log(res.data)).catch(err => console.log(err));
+        axios.post('/api/v1',user).then(res => console.log(res.data)).catch(err => console.log(err));
  
     }
   

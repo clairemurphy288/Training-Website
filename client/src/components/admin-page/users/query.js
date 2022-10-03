@@ -15,7 +15,7 @@ export default function Query(props) {
         setSearch(e.target.value);
     }
     async function onSubmit(e) {
-        await axios.post("http://localhost:5000/query", {search: search}).then( async (response) => {
+        await axios.post("/api/v1/query", {search: search}).then( async (response) => {
                 if(response.data.length > 0) {
                     props.setUsers(response.data);
                 }

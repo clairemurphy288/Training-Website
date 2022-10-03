@@ -24,7 +24,7 @@ export default class Quiz extends Component {
 
     async componentDidMount () {
         let resData;
-        await axios.get("http://localhost:5000/quizzes").then(function (response) {
+        await axios.get("/api/v1/quizzes").then(function (response) {
             resData = response.data; 
           })
           .catch(function (error) {

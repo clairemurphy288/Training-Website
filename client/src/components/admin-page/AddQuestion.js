@@ -32,7 +32,7 @@ export default function AddQuestion(props) {
             answerChoices:answers,
             indexOfAnswer:selectedAnswer
         }
-        await axios.post('http://localhost:5000/admin/add', {question: newQuestion, _id: props._id}).then(async res => {
+        await axios.post('/api/v1/admin/add', {question: newQuestion, _id: props._id}).then(async res => {
             console.log(res.data);
 
            }).catch(err => console.log(err));
