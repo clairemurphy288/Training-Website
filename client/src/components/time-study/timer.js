@@ -2,13 +2,20 @@ import {useState, useEffect} from 'react';
 import React, {Component} from 'react';
 import "./timer.css"
 import Navbar from "../quiz/navbar/quiznavbar";
+import {useLocation} from 'react-router-dom';
 export default function Timer(props) { 
     const [date, setDate] = useState(new Date().toLocaleString());
     const [initialTime, setInitialTime] = useState(0);
     const [pause, setPause] = useState("pause")
     const [interval, setNewInt] = useState(0);
     const [deltaTime, setDelta] = useState(0);
-    const [placeholder, setPlaceholder] = useState(0);
+
+    //process utilized for the time study from TimeSelect
+    const location = useLocation();
+    const  timer  = location.state.timer.process;
+
+    const [step, setStep] = useState(0);
+
     function startTimer(e) {
         const w = Date.now();
         setInitialTime(w);
@@ -79,6 +86,7 @@ export default function Timer(props) {
             <Navbar/>
         <div className="timer-body">
             <div className="container1">
+                <h1>{timer[step].stepName}</h1>
             <div className = "timer-box">
                     <h1 id="timer">{`${date}` }</h1>   
                 </div>  

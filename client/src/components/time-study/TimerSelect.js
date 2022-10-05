@@ -41,7 +41,7 @@ export default function TimerSelect() {
                                     {items}
                                 </select>
                             </div>
-                            <Link to="/timer" state={{quiz: timers[selected]}} style={{ textDecoration: 'none' }}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
+                            <Link to="/timer" state={{timer: timers[selected]}} style={{ textDecoration: 'none' }}><button id='quiz-button-sub' type="submit">SUBMIT</button></Link>
                         </div>
 
     </div>
