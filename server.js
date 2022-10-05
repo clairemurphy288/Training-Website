@@ -1,3 +1,4 @@
+const axios = require("axios");
 const path = require("path")
 const express = require('express');
 //cors is some middleware still not sure what it does. 
@@ -5,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 ////not sure what this does
 app.use(cors());
 app.use(express.json());
@@ -47,9 +48,7 @@ if (process.env.NODE_ENV === "production") {
 
     })
 } else {
-    app.get("/server", (req,res) => {
-        res.send("api is running")
-    })
+    console.log("entering dev mode");
 }
 
 app.listen(port, () => {

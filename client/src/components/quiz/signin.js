@@ -37,6 +37,7 @@ export default class Signin extends Component {
 
 
     async onSubmit(e) {
+        console.log(axios.defaults)
         e.preventDefault();
         console.log("sent");
         const user = {
