@@ -4,6 +4,7 @@ import "./timer.css"
 import Navbar from "../quiz/navbar/quiznavbar";
 import {useLocation} from 'react-router-dom';
 export default function Timer(props) { 
+    //set date only on first start push/
     const [date, setDate] = useState(new Date().toLocaleString());
     const [initialTime, setInitialTime] = useState(0);
     const [pause, setPause] = useState("pause")
@@ -61,14 +62,16 @@ export default function Timer(props) {
     },[pause]);
 
     function stopTimer(e) {
+        //thier time entered to db
         console.log("stop timer");
         setNewInt(clearInterval(interval));
+        setStep(step + 1);
 
     }
     function msToTime(duration) {
         setDelta(duration);
         console.log(duration);
-        // const milliseconds = parseInt((duration % 1000) / 100);
+        const milliseconds = parseInt((duration % 1000) / 100);
         var seconds = Math.floor((duration / 1000) % 60);
         var minutes = Math.floor((duration / (1000 * 60)) % 60);
         var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
@@ -91,6 +94,7 @@ export default function Timer(props) {
                     <h1 id="timer">{`${date}` }</h1>   
                 </div>  
                 <div className="d-flex justify-content-center mb-2">
+                    {/* when the user hits start: remove start button */}
                     
                     <button onClick={startTimer}  className="btn btn-lg  btn-primary mx-1">start</button>
                     <button onClick={pauseTimer} className="btn btn-lg btn-dark mx-1">{pause}</button>
