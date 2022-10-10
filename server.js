@@ -1,9 +1,7 @@
-<<<<<<< HEAD:backend/server.js
+
 require("dotenv").config();
-=======
 const axios = require("axios");
 const path = require("path")
->>>>>>> claire-frontend:server.js
 const express = require('express');
 //cors is some middleware still not sure what it does. 
 const cors = require('cors');
