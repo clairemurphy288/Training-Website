@@ -7,6 +7,7 @@
     min-height: 100vh;
 }
 .container1 {
+    font-family: 'Raleway', sans-serif;
     display: flex;
     width: 60%;
     min-height: 50vh;
@@ -24,8 +25,8 @@
 /* Timer */
 #timer {
     margin: 0;
-    font-family: 'Edu SA Beginner', cursive;
     color: white;
+    font-family: 'Raleway', sans-serif;
     font-size: 3rem;
 }
 .timer-box {
@@ -43,3 +44,6 @@
     bottom: 20%;
     background-color: #785be6;
 } 
+.invisible {
+    display: none;
+}

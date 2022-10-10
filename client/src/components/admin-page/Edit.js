@@ -104,7 +104,6 @@ useEffect(() => {
 
     }
     function onBlur(e) {
-      console.log("blurred");
       axios.post("/api/v1/admin/edit-title", {name: e.target.value, query: query} ).then( async (res,req) => {
         console.log(res.data)
         })

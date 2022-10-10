@@ -1,9 +1,12 @@
-import {Link} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 export default function NavBar(props) {
+    const navigate = useNavigate();
     function logOut(e) {
-        console.log("logOut");
-        // <Link to ="/signin">
+        e.preventDefault();
+        localStorage.setItem("currentUser", "");
+        navigate("/signin");
+
     }
     return(
       <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: 'lightblue' }}>
@@ -15,11 +18,9 @@ export default function NavBar(props) {
           <div class="collapse navbar-collapse" id="navbarCollapse9">
               <div class="navbar-nav">
                   <a href="/dashboard" class="nav-item nav-link active">Home</a>
-                  <a href="/quiz" class="nav-item nav-link">Quiz</a>
-                  <a href='/scores' class="nav-item nav-link">Scores</a>
               </div>
               <form class="d-flex ms-auto">
-                  <button onClick={logOut} type="submit" class="btn btn-outline-light">LOGOUT</button>
+                <button onClick={logOut} type="submit" class="btn btn-outline-light">LOGOUT</button>
               </form>
           </div>
       </div>        

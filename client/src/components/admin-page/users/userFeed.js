@@ -90,7 +90,6 @@ export function User(props) {
     
     async function onSubmit(e) {
         e.preventDefault();
-        console.log("submit")
         const user = {
             username: username,
             email: email, 
@@ -107,7 +106,6 @@ export function User(props) {
     }
     async function onClick(e) {
         await axios.post('/api/v1/delete', {_id: props._id}).then(async (res) => {
-            console.log(res.data);
         } ).catch(err => console.log(err));
         props.getUsers();
     }

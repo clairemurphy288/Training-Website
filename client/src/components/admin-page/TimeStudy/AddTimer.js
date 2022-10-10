@@ -34,7 +34,6 @@ export default function AddTimer(props) {
     return(
         <div className="container text-center">
             <NavBar/>
-            <h1 className='timer-header'>This page allows the admin to create a timer!</h1>
             <label>Title</label>
             <input className="form-control mb-2"></input>
             <div>{list}</div>

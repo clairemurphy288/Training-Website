@@ -94,8 +94,8 @@ export default class Admin extends Component {
                 <button className="btn btn-primary" type="submit">Submit</button>
             
             </form>
-            <h5 className="mt-2 quick-start-title">or start with a blank quiz </h5>
-            <i onMouseOut={this.mouseOut} onMouseOver={this.mouseOver} className="mx-3 fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+            <a className="mt-2 quick-start-title">or start with a blank quiz</a>
+            {/* <i onMouseOut={this.mouseOut} onMouseOver={this.mouseOver} className="mx-3 fa-solid fa-arrow-right-from-bracket fa-lg"></i> */}
             </div>
         </div>
         )

@@ -11,7 +11,9 @@ export default function Timer(props) {
     const [interval, setNewInt] = useState(0);
     const [deltaTime, setDelta] = useState(0);
 
-    //process utilized for the time study from TimeSelect
+    //button visibility
+
+    //process utilized for the time study from TimeSelect.js
     const location = useLocation();
     const  timer  = location.state.timer.process;
 
@@ -20,10 +22,11 @@ export default function Timer(props) {
     function startTimer(e) {
         const w = Date.now();
         setInitialTime(w);
+        e.currentTarget.classList.add("invisible")
         console.log("timer started");
     }
     useEffect(()=> {
-        if(initialTime !== 0) {
+        if (initialTime !== 0) {
             var i = setInterval(()=> {
                 const currentTime = Date.now();
                 const delta = currentTime  - initialTime;
@@ -98,7 +101,7 @@ export default function Timer(props) {
                     
                     <button onClick={startTimer}  className="btn btn-lg  btn-primary mx-1">start</button>
                     <button onClick={pauseTimer} className="btn btn-lg btn-dark mx-1">{pause}</button>
-                    <button onClick={stopTimer} className="btn btn-lg btn-danger mx-1">stop</button>
+                    <button onClick={stopTimer} className="btn btn-lg btn-danger mx-1 stop">stop</button>
                 </div>
                 
             </div>

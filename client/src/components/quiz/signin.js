@@ -48,7 +48,6 @@ export default class Signin extends Component {
         await axios.get('/api/v1',{params: user})
         .then(res => {
             localStorage.setItem('currentUser', res.data[0].username);
-            console.log(localStorage.getItem('currentUser'));
             signin = res.data[1];
         }
         ).catch(err => {
