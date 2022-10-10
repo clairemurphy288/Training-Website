@@ -45,6 +45,9 @@ const userSchema = new Schema({
     maintenancePlan: {
         type: Boolean,
         default: false
+    }, timerArray: {
+        type: Array
+
     }
 
 });

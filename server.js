@@ -1,9 +1,4 @@
-<<<<<<< HEAD:backend/server.js
 require("dotenv").config();
-=======
-const axios = require("axios");
-const path = require("path")
->>>>>>> claire-frontend:server.js
 const express = require('express');
 //cors is some middleware still not sure what it does. 
 const cors = require('cors');
@@ -24,7 +19,6 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully!")
 });
-////////////I still need to close mongoDB somewhere...
 
 
 
@@ -49,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
     app.get("*", (req,res) => {
         res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 
-    })
+    });
 } else {
     console.log("entering dev mode");
 }

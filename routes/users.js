@@ -2,13 +2,10 @@ const router = require('express').Router();
 let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
 let {Quiz} = require("../models/quiz.models");
+let Timer = require("../models/timer.models");
 
-router.route("/test").get(async (req,res)=> {
-    res.send("the server is connected!")
-})
 router.route('/').get( async(req,res) => {
     try {
-        console.log(req.query);
         const users = await User.findOne({username: req.query.username});
         if(req.query.username === users.username){
             console.log('username is true');
@@ -72,8 +69,14 @@ router.route('/feed').get( async (req,res) => {
 
 router.route('/feed').post( async (req,res) => {
     try {
+
         const _id = new ObjectId(req.body[1]);
-        console.log(req.body)
+        const oldUser = await User.findOne({_id: _id});
+        const user = req.body[0];
+        if (user.timer == true && oldUser.timer == false) {
+            const timer = await Timer.find();
+            await User.updateOne({_id: _id}, {timerArray: timer});
+        }
         await User.updateOne({_id: _id}, req.body[0]);
         res.send("post function working");
     } catch (err) {
