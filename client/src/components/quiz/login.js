@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './sign-up.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default class Login extends Component {
@@ -41,15 +42,22 @@ export default class Login extends Component {
 
     onSubmit(e) {
         //prevents submission of default values
-        console.log("submitted!")
         e.preventDefault();
         const user = {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email
         }
-        console.log(user);
-        axios.post('/api/v1',user).then(res => console.log(res.data)).catch(err => console.log(err));
+        //need to fix error catching
+        axios.post('/api/v1',user).then(res => {if (res.data != "User added successfullly" || res.data != "") {
+            console.log(res.data)
+        } else {
+            useNavigate("/dashboard");
+            //add to localStorage
+        }})
+        .catch(err => {
+            alert("Something went wrong: please contact developer at murphyclaire91@gmail.com.");
+            } );
  
     }
   

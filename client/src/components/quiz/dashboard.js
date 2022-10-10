@@ -4,6 +4,7 @@ import ReactCard from "./ReactCard";
 import Navbar from "./navbar/quiznavbar";
 
 export default class Dashboard extends Component {
+    //needs to check if admin or standard. Then conditonally render these cards
     render() {
         return (
             <div className='dash-container'>

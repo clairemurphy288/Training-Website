@@ -5,6 +5,7 @@ import Navbar from "../quiz/navbar/quiznavbar";
 import {useLocation} from 'react-router-dom';
 export default function Timer(props) { 
     //set date only on first start push/
+    const [totalTime, setTotal] = useState(0);
     const [date, setDate] = useState(new Date().toLocaleString());
     const [initialTime, setInitialTime] = useState(0);
     const [pause, setPause] = useState("pause")
@@ -20,9 +21,15 @@ export default function Timer(props) {
     const [step, setStep] = useState(0);
 
     function startTimer(e) {
+        //only setting total time on initial start press
+        if (totalTime == 0) {
+            setTotal(Date.now());
+        }
         const w = Date.now();
         setInitialTime(w);
-        e.currentTarget.classList.add("invisible")
+        //delay?
+        document.getElementById("start").classList.toggle("invisible");
+        document.getElementById("stop").classList.toggle("invisible");
         console.log("timer started");
     }
     useEffect(()=> {
@@ -65,10 +72,12 @@ export default function Timer(props) {
     },[pause]);
 
     function stopTimer(e) {
-        //thier time entered to db
         console.log("stop timer");
         setNewInt(clearInterval(interval));
         setStep(step + 1);
+        document.getElementById("stop").classList.toggle("invisible");
+        document.getElementById("start").classList.toggle("invisible");
+        //add two things to database here 
 
     }
     function msToTime(duration) {
@@ -99,9 +108,9 @@ export default function Timer(props) {
                 <div className="d-flex justify-content-center mb-2">
                     {/* when the user hits start: remove start button */}
                     
-                    <button onClick={startTimer}  className="btn btn-lg  btn-primary mx-1">start</button>
-                    <button onClick={pauseTimer} className="btn btn-lg btn-dark mx-1">{pause}</button>
-                    <button onClick={stopTimer} className="btn btn-lg btn-danger mx-1 stop">stop</button>
+                    <button id="start" onClick={startTimer}  className="btn btn-lg  btn-primary mx-1">start</button>
+                    <button id="pause" onClick={pauseTimer} className="btn btn-lg btn-dark mx-1">{pause}</button>
+                    <button id="stop" onClick={stopTimer} className="btn btn-lg btn-danger mx-1 invisible">stop</button>
                 </div>
                 
             </div>

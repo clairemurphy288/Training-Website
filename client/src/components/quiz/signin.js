@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import './sign-up.css';
@@ -37,7 +37,6 @@ export default class Signin extends Component {
 
 
     async onSubmit(e) {
-        console.log(axios.defaults)
         e.preventDefault();
         console.log("sent");
         const user = {
@@ -51,7 +50,11 @@ export default class Signin extends Component {
             signin = res.data[1];
         }
         ).catch(err => {
-            console.log(err);
+            if (AxiosError) {
+                alert("Invalid login credentials.")
+            } else {
+                alert(err);
+            }
         });
         this.setState( {
             validSignin: signin
@@ -113,8 +116,6 @@ export default class Signin extends Component {
                   
                 </div>
             </form>
-              <button onClick = {this.testingServer}>TEST THE SERVER</button>
-              <h1>{this.state.serverValid}</h1>
               </div>
 
         );
