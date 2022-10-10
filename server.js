@@ -1,6 +1,5 @@
-<<<<<<< HEAD:backend/server.js
+
 require("dotenv").config();
-=======
 const axios = require("axios");
 const path = require("path")
 >>>>>>> claire-frontend:server.js
