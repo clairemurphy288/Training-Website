@@ -133,5 +133,12 @@ router.route('/score').get(async(req,res) => {
         res.status(400).json('Error' + err);
     }
 });
+
+router.route("/timer/users").post( async (req,res) => {
+    console.log(req.body);
+    res.send("connected to the backend")
+
+
+});
     
 module.exports = router;

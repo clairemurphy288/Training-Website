@@ -3,16 +3,17 @@ import React, {Component} from 'react';
 import "./timer.css"
 import Navbar from "../quiz/navbar/quiznavbar";
 import {useLocation} from 'react-router-dom';
+import axios from 'axios';
 export default function Timer(props) { 
     //set date only on first start push/
     const [totalTime, setTotal] = useState(0);
+    const [lastStopPress, setLastStop] = useState(0);
+    const [totalPerformedTime, setTotalPerformedTime] = useState(0);
     const [date, setDate] = useState(new Date().toLocaleString());
     const [initialTime, setInitialTime] = useState(0);
     const [pause, setPause] = useState("pause")
     const [interval, setNewInt] = useState(0);
     const [deltaTime, setDelta] = useState(0);
-
-    //button visibility
 
     //process utilized for the time study from TimeSelect.js
     const location = useLocation();
@@ -27,7 +28,6 @@ export default function Timer(props) {
         }
         const w = Date.now();
         setInitialTime(w);
-        //delay?
         document.getElementById("start").classList.toggle("invisible");
         document.getElementById("stop").classList.toggle("invisible");
         console.log("timer started");
@@ -37,7 +37,7 @@ export default function Timer(props) {
             var i = setInterval(()=> {
                 const currentTime = Date.now();
                 const delta = currentTime  - initialTime;
-                console.log(msToTime(delta));
+                // console.log(msToTime(delta));
                 setDate(msToTime(delta));
     
             }, 1000);
@@ -71,18 +71,37 @@ export default function Timer(props) {
         }
     },[pause]);
 
-    function stopTimer(e) {
+
+    async function stopTimer(e) {
         console.log("stop timer");
+        let performedTime;
+        if (pause == "unpause") {
+            const currentTime = Date.now();
+            const delta = currentTime  - initialTime;
+            performedTime = delta;
+        } else {
+            performedTime = deltaTime;
+        
+        }
+
+        setTotalPerformedTime(totalPerformedTime + performedTime);
         setNewInt(clearInterval(interval));
         setStep(step + 1);
         document.getElementById("stop").classList.toggle("invisible");
         document.getElementById("start").classList.toggle("invisible");
-        //add two things to database here 
+        const actualTime = Date.now() - totalTime;
+
+        console.log(msToTime(actualTime));
+        console.log(msToTime(performedTime));
+
+         await axios.post('/api/v1/timer/users', {actualTime: actualTime, performedTime: performedTime}).then(res => {
+            console.log(res.data)
+        }).catch(err => console.log(err));
 
     }
     function msToTime(duration) {
         setDelta(duration);
-        console.log(duration);
+        // console.log(duration);
         const milliseconds = parseInt((duration % 1000) / 100);
         var seconds = Math.floor((duration / 1000) % 60);
         var minutes = Math.floor((duration / (1000 * 60)) % 60);
