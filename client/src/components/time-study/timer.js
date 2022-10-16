@@ -5,7 +5,6 @@ import Navbar from "../quiz/navbar/quiznavbar";
 import {useLocation} from 'react-router-dom';
 import axios from 'axios';
 export default function Timer(props) { 
-    //set date only on first start push/
     const [totalTime, setTotal] = useState(0);
     const [lastStopPress, setLastStop] = useState(0);
     const [totalPerformedTime, setTotalPerformedTime] = useState(0);
@@ -26,6 +25,7 @@ export default function Timer(props) {
         if (totalTime == 0) {
             setTotal(Date.now());
         }
+        setLastStop(Date.now());
         const w = Date.now();
         setInitialTime(w);
         document.getElementById("start").classList.toggle("invisible");
@@ -59,9 +59,9 @@ export default function Timer(props) {
             setPause("pause")
         }
     }
-
+    //this useEffect is causing idle timer
     useEffect(()=> {
-        if(pause === "unpause" && interval === undefined) {
+        if (pause === "unpause" && interval === undefined) {
             console.log(msToTime(deltaTime))
         } else if(pause === "pause" && interval === undefined) {
             console.log("the intial time: " + initialTime);
@@ -86,10 +86,16 @@ export default function Timer(props) {
 
         setTotalPerformedTime(totalPerformedTime + performedTime);
         setNewInt(clearInterval(interval));
-        setStep(step + 1);
+        if (step < timer.length - 1) {
+            setStep(step + 1);
+        } else {
+            console.log("end of process");
+            //useEffect for total performed time 
+            console.log(msToTime(totalPerformedTime));
+        }
         document.getElementById("stop").classList.toggle("invisible");
         document.getElementById("start").classList.toggle("invisible");
-        const actualTime = Date.now() - totalTime;
+        const actualTime = Date.now() - lastStopPress;
 
         console.log(msToTime(actualTime));
         console.log(msToTime(performedTime));
