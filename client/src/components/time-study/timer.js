@@ -16,7 +16,7 @@ export default function Timer(props) {
     const [deltaTime, setDelta] = useState(0);
 
     //below are the arrays containing the actualTimes and performed times
-    const [actualTime, setActualTime] = useState([]);
+    const [actualTimeArr, setActualTime] = useState([]);
     const [performedTime, setPerformedTime] = useState([]);
 
     const [pause, setPause] = useState("pause");
@@ -68,6 +68,13 @@ export default function Timer(props) {
         }
     }
 
+    useEffect(()=> {
+        console.log(actualTimeArr);
+        console.log(performedTime);
+
+    }, [actualTimeArr, performedTime])
+
+
     async function stopTimer(e) {
         setTimerState(false);
         setDate("00:00:00");
@@ -75,14 +82,7 @@ export default function Timer(props) {
         setTotalPerformedTime(totalPerformedTime + deltaTime);
         //clears interval which progresses the timer (stops it)
         setNewInt(clearInterval(interval));
-        
-        //if-block handles progession of steps. If on last step end the session.
-        if (step < timer.length - 1) {
-            setStep(step + 1);
-        } else {
-            console.log("end of process");
-            console.log(msToTime(totalPerformedTime));
-        }
+    
         //edits the visibility and state of the buttons
         setPause("pause");
         document.getElementById("stop").classList.toggle("invisible");
@@ -91,10 +91,16 @@ export default function Timer(props) {
         //actuaTime is how long the user really spent on the step. 
         //This is the timer that is running in the background.
         const actualTime = Date.now() - lastStopPress;
-
-        console.log(msToTime(actualTime));
-        console.log(msToTime(deltaTime));
-
+            
+        //if-block handles progession of steps. If on last step end the session.
+        if (step < timer.length - 1) {
+            setStep(step + 1);
+            setActualTime([...actualTimeArr, actualTime]);
+            setPerformedTime([...performedTime, deltaTime]);
+        } else {
+            console.log("end of process");
+            console.log(msToTime(totalPerformedTime));
+        }
         //  await axios.post('/api/v1/timer/users', {actualTime: actualTime, performedTime: performedTime}).then(res => {
         //     console.log(res.data)
         // }).catch(err => console.log(err));
