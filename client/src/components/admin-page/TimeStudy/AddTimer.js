@@ -9,6 +9,7 @@ export default function AddTimer(props) {
     const location = useLocation();
     const  timer  = location.state;
     const [process, setProcess] = useState([]);
+    console.log(timer)
 
     useEffect(() => {
         getNewProcess()
@@ -35,7 +36,7 @@ export default function AddTimer(props) {
         <div className="container text-center">
             <NavBar/>
             <label>Title</label>
-            <input className="form-control mb-2"></input>
+            <input defaultValue={timer.title} className="form-control mb-2"></input>
             <div>{list}</div>
             <button onClick={onClick} className="btn btn-dark mt-2">+</button>
         </div>

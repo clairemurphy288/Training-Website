@@ -97,10 +97,12 @@ export default function Timer(props) {
             setStep(step + 1);
             setActualTime([...actualTimeArr, actualTime]);
             setPerformedTime([...performedTime, deltaTime]);
-        } else {
-            console.log("end of process");
-            console.log(msToTime(totalPerformedTime));
-        }
+        } else if (step == timer.length - 1) {
+            setActualTime([...actualTimeArr, actualTime]);
+            setPerformedTime([...performedTime, deltaTime]);
+            console.log("end process");
+            //create of function that sends alert and adds to backend
+        } 
         //  await axios.post('/api/v1/timer/users', {actualTime: actualTime, performedTime: performedTime}).then(res => {
         //     console.log(res.data)
         // }).catch(err => console.log(err));
