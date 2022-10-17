@@ -36,7 +36,7 @@ export default function TimerSelect() {
                     <div className='quiz-holder'>
                         <div className='quiz-selector-section'>
                             <div>
-                                <label className='quiz-form-label'>Choose a quiz:</label>
+                                <label className='quiz-form-label'>Choose a process:</label>
                                 <select className="form-select" id='quiz-form-select' value={selected} onChange={_handleChange}>
                                     {items}
                                 </select>

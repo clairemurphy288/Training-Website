@@ -29,6 +29,13 @@ export default function AddTimer(props) {
            getNewProcess();
 
     }
+    async function updateTitle(e) {
+        if (e.target.value != timer.title) {
+            await axios.put('/api/v1/timer',  {_id: timer._id, title: e.target.value}).then(res => {
+            }).catch(err => console.log(err));
+
+        }
+    }
     const list = process.map((item, index) =>  {
         return <FormTimer getNewProcess = {getNewProcess} timerId = {timer._id}  item = {item}  key = {item._id}/>})
 
@@ -36,7 +43,7 @@ export default function AddTimer(props) {
         <div className="container text-center">
             <NavBar/>
             <label>Title</label>
-            <input defaultValue={timer.title} className="form-control mb-2"></input>
+            <input onBlur={updateTitle} defaultValue={timer.title} className="form-control mb-2"></input>
             <div>{list}</div>
             <button onClick={onClick} className="btn btn-dark mt-2">+</button>
         </div>

@@ -21,6 +21,9 @@ router.route('/timer')
 }).delete( async (req, res) => {
     await Timer.deleteOne({_id: new ObjectId(req.body._id)});
     res.send("valid request");
+}).put(async (req,res) => {
+    await Timer.updateOne({_id: new ObjectId(req.body._id)}, {$set: {title: req.body.title}});
+    res.send("connected to backend");
 });
 
 router.route('/step')
@@ -49,6 +52,6 @@ router.route('/step')
     const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
     console.log(val);
     res.send("connected to backend")
-})
+});
 
 module.exports = router;

@@ -3,8 +3,12 @@ import React, {Component} from 'react';
 import "./timer.css"
 import Navbar from "../quiz/navbar/quiznavbar";
 import {useLocation} from 'react-router-dom';
+import Alert from "../admin-page/utilities/alert"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 export default function Timer(props) { 
+
+    
 
     //state for the different timers
     const [totalTime, setTotal] = useState(0);
@@ -24,8 +28,12 @@ export default function Timer(props) {
     //process utilized for the time study from TimeSelect.js
     const location = useLocation();
     const  timer  = location.state.timer.process;
+    const title = location.state.timer.title;
 
     const [step, setStep] = useState(0);
+    const [showAlert, setAlert] = useState(false);
+
+    const navigate = useNavigate();
 
     function startTimer(e) {
         //only setting total time on initial start press
@@ -38,7 +46,6 @@ export default function Timer(props) {
         setInitialTime(w); //this will start the timer. Check UseEffect() below
         document.getElementById("start").classList.toggle("invisible");
         document.getElementById("stop").classList.toggle("invisible");
-        console.log("timer started");
     }
     //causing idle timer
     useEffect(()=> {
@@ -68,11 +75,11 @@ export default function Timer(props) {
         }
     }
 
-    useEffect(()=> {
-        console.log(actualTimeArr);
-        console.log(performedTime);
+    // useEffect(()=> {
+    //     console.log(actualTimeArr);
+    //     console.log(performedTime);
 
-    }, [actualTimeArr, performedTime])
+    // }, [actualTimeArr, performedTime])
 
 
     async function stopTimer(e) {
@@ -100,12 +107,21 @@ export default function Timer(props) {
         } else if (step == timer.length - 1) {
             setActualTime([...actualTimeArr, actualTime]);
             setPerformedTime([...performedTime, deltaTime]);
-            console.log("end process");
+            setAlert(true);
+            sendToBackend();
+            setTimeout(() => {sendToDashboard()}, 2000)
             //create of function that sends alert and adds to backend
         } 
-        //  await axios.post('/api/v1/timer/users', {actualTime: actualTime, performedTime: performedTime}).then(res => {
-        //     console.log(res.data)
-        // }).catch(err => console.log(err));
+
+    }
+    async function sendToBackend() {
+            const totalActualTime = Date.now() - totalTime;
+            await axios.post('/api/v1/timer/users', {title: title, actualTime: actualTimeArr, performedTime: performedTime, totalPerformedTime: totalPerformedTime, totalActualTime: totalActualTime, dateCompleted: new Date()}).then(res => {
+        }).catch(err => console.log(err));
+
+    }
+    function sendToDashboard() {
+        navigate("/dashboard")
 
     }
     function msToTime(duration) {
@@ -122,9 +138,12 @@ export default function Timer(props) {
       }
      
 
+
     return (
         <div>
             <Navbar/>
+            
+            {showAlert? <Alert Title="Well Done" innerText="You have completed this time study! You will be redirected to home page. "/> : false }
         <div className="timer-body">
             <div className="container1">
                 <h1>{timer[step].stepName}</h1>
@@ -140,7 +159,8 @@ export default function Timer(props) {
                 
             </div>
            
-        </div> </div>);
+        </div>
+        </div>);
 
 }
 

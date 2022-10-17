@@ -3,7 +3,7 @@ let User = require("../models/user.models");
 var ObjectId = require('mongodb').ObjectId; 
 let {Quiz} = require("../models/quiz.models");
 let Timer = require("../models/timer.models");
-
+const TimerAttempt = require('../models/timerattempt.models');
 router.route('/').get( async(req,res) => {
     try {
         const users = await User.findOne({username: req.query.username});
@@ -136,7 +136,10 @@ router.route('/score').get(async(req,res) => {
 
 router.route("/timer/users").post( async (req,res) => {
     console.log(req.body);
+    const Attempt = new TimerAttempt(req.body);
+    await   Attempt.save();
     res.send("connected to the backend")
+
 
 
 });

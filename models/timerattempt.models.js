@@ -19,6 +19,8 @@ const attemptSchema = new Schema({
     },
     performedTotalTime: {
         type: Number
+    }, dateCompleted: {
+        type: Date
     }
 });
 
