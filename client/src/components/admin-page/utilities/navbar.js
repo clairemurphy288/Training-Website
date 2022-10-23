@@ -19,6 +19,9 @@ export default function NavBar(props) {
             <Link className="nav-link" to="/add-timer">Time Study</Link>
           </li>
           <li class="nav-item">
+            <Link className="nav-link" to="/data-visualization">Data Visualization</Link>
+          </li>
+          <li class="nav-item">
             <Link className="nav-link" to="/dashboard">Standard View</Link>
           </li>
           <li class="nav-item">

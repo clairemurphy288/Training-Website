@@ -43,6 +43,7 @@ export default function TimerHomePage(props) {
 
     return (<div>
             <NavBar/>
+        <div className='container'>
             <ul className="list-group list-group-flush mt-2">{list}</ul>
             <h1 className='m-3'>Add new Timer</h1>
             <div className='container'>
@@ -51,6 +52,7 @@ export default function TimerHomePage(props) {
                     <button className='btn btn-primary'>+</button>
                 </form>
             </div>
+        </div>
 
     </div>);
 }

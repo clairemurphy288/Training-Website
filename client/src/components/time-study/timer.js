@@ -6,6 +6,7 @@ import {useLocation} from 'react-router-dom';
 import Alert from "../admin-page/utilities/alert"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import TimerMenu from './TimerMenu';
 export default function Timer(props) { 
 
     
@@ -74,14 +75,6 @@ export default function Timer(props) {
             setInitialTime(Date.now() - deltaTime);
         }
     }
-
-    // useEffect(()=> {
-    //     console.log(actualTimeArr);
-    //     console.log(performedTime);
-
-    // }, [actualTimeArr, performedTime])
-
-
     async function stopTimer(e) {
         setTimerState(false);
         setDate("00:00:00");
@@ -116,7 +109,7 @@ export default function Timer(props) {
     }
     async function sendToBackend() {
             const totalActualTime = Date.now() - totalTime;
-            await axios.post('/api/v1/timer/users', {title: title, actualTime: actualTimeArr, performedTime: performedTime, totalPerformedTime: totalPerformedTime, totalActualTime: totalActualTime, dateCompleted: new Date()}).then(res => {
+            await axios.post('/api/v1/timer/users', {title: title, actualTime: actualTimeArr, performedTime: performedTime, performedTotalTime: totalPerformedTime, actualTotalTime: totalActualTime, dateCompleted: new Date()}).then(res => {
         }).catch(err => console.log(err));
 
     }
@@ -137,17 +130,15 @@ export default function Timer(props) {
         return hours + ":" + minutes + ":" + seconds 
       }
      
-
-
     return (
         <div>
             <Navbar/>
             
             {showAlert? <Alert Title="Well Done" innerText="You have completed this time study! You will be redirected to home page. "/> : false }
         <div className="timer-body">
-            <div className="container1">
+            <div className="timer-container">
                 <h1>{timer[step].stepName}</h1>
-            <div className = "timer-box">
+                 <div className = "timer-box">
                     <h1 id="timer">{`${date}` }</h1>   
                 </div>  
                 <div className="d-flex justify-content-center mb-2">
@@ -158,7 +149,9 @@ export default function Timer(props) {
                 </div>
                 
             </div>
-           
+            <div className='timer-menu'>
+                <TimerMenu menuList = {timer}/>
+            </div>
         </div>
         </div>);
 

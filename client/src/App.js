@@ -15,6 +15,7 @@ import Scores from "./components/quiz/scores";
 import Timer from "./components/time-study/timer";
 import AddTimer from "./components/admin-page/TimeStudy/AddTimer.js";
 import TimerSelect from "./components/time-study/TimerSelect.js";
+import DataVisualization from "./components/admin-page/TimeStudy/DataVisualization.js";
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
       <Route path="/scores" element={<Scores/>}/>
       <Route path="/timer" element={<Timer/>}/>
       <Route path="/select-timer" element={<TimerSelect/>}/>
+      <Route path="/data-visualization" element={<DataVisualization/>}/>
       </Routes>
     </Router>
  

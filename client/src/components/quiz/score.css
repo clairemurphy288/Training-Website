@@ -2,14 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    height: 50vh;
 }
 
 .scoreboard-table {
     font-size: 18px;
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
-
+/* 
 th {
     background-color: #252d4a;
     color: #fff;
@@ -53,5 +55,4 @@ tr:last-child td:last-child {
 }
 
 tr td:last-child {
-    border-right: none;
-}
+    border-right: none; */

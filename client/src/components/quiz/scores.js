@@ -53,16 +53,20 @@ export default function GetScores() {
     return (
         <div className="scoreboard-body">
             <Navbar />
-            <div className="scoreboard-wrapper">
-                <table className="scoreboard-table">
-                    <tr>
+            <div className="mt-4 container scoreboard-wrapper">
+                <table className="table table-light scoreboard-table">
+                    <thead>
+                    <tr className="table-header">
                         <th>Rank</th>
                         <th>Username</th>
                         <th>Score</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {scores.map((o) => {
                         return o;
                     })}
+                    </tbody>
                 </table>
             </div>            
         </div>
