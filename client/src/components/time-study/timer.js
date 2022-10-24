@@ -101,15 +101,22 @@ export default function Timer(props) {
             setActualTime([...actualTimeArr, actualTime]);
             setPerformedTime([...performedTime, deltaTime]);
             setAlert(true);
-            sendToBackend();
             setTimeout(() => {sendToDashboard()}, 2000)
             //create of function that sends alert and adds to backend
         } 
 
     }
+
+    useEffect(()=> {
+        if (showAlert) {
+            sendToBackend();
+        }
+
+    },[totalTime,showAlert, actualTimeArr, performedTime, totalPerformedTime])
     async function sendToBackend() {
+        const user = JSON.parse(localStorage.getItem('currentUser')).username;
             const totalActualTime = Date.now() - totalTime;
-            await axios.post('/api/v1/timer/users', {title: title, actualTime: actualTimeArr, performedTime: performedTime, performedTotalTime: totalPerformedTime, actualTotalTime: totalActualTime, dateCompleted: new Date()}).then(res => {
+            await axios.post('/api/v1/timer/users', {user: user, title: title, actualTime: actualTimeArr, performedTime: performedTime, performedTotalTime: totalPerformedTime, actualTotalTime: totalActualTime, dateCompleted: new Date()}).then(res => {
         }).catch(err => console.log(err));
 
     }

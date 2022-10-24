@@ -21,6 +21,8 @@ const attemptSchema = new Schema({
         type: Number
     }, dateCompleted: {
         type: Date
+    }, user: {
+        type: String
     }
 });
 

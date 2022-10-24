@@ -16,7 +16,6 @@ export default function TimerMenu(props) {
     </thead>
     <tbody>
        {list}
-       
     </tbody>
   </table>
   </div>);

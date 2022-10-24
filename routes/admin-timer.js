@@ -36,7 +36,6 @@ router.route('/step')
 })
 .post( async (req, res) => {
     //add  a step
-    console.log(req.body._id);
     const process = await Timer.updateOne({_id: req.body._id}, {$push: {process: {stepName: ""}}});
     res.send("valid request")
 }).put(async (req, res) => {
@@ -50,7 +49,6 @@ router.route('/step')
     const timerId = new ObjectId(req.body.timerId);
     const _id = new ObjectId(req.body._id);
     const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
-    console.log(val);
     res.send("connected to backend")
 });
 

@@ -48,11 +48,28 @@
   font-size: 22px; 
   line-height: normal;
   -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
+   -moz-border-radius: 8px;
+  border-radius: 8px;
   background: #76a6fb;
   border-color: #76a6fb;
 
+}
+#stop {
+  padding: 18px 28px;
+  font-size: 22px; 
+  line-height: normal;
+  -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+  border-radius: 8px;
+
+}
+#pause {
+  padding: 18px 28px;
+  font-size: 22px; 
+  line-height: normal;
+  -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+  border-radius: 8px;
 }
 
 .invisible {

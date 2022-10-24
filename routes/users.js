@@ -137,10 +137,14 @@ router.route('/score').get(async(req,res) => {
 router.route("/timer/users").post( async (req,res) => {
     console.log(req.body);
     const Attempt = new TimerAttempt(req.body);
-    await   Attempt.save();
+    await Attempt.save();
     res.send("connected to the backend")
-
-
+})
+.get(async (req,res) => {
+const sortedAttempts = await TimerAttempt.find({}).sort({dateCompleted: -1});
+    console.log(sortedAttempts);
+    
+    res.send(sortedAttempts);
 
 });
     
