@@ -38,7 +38,6 @@ export default class Signin extends Component {
 
     async onSubmit(e) {
         e.preventDefault();
-        console.log("sent");
         const user = {
             username: this.state.username,
             password: this.state.password
@@ -46,7 +45,7 @@ export default class Signin extends Component {
         let signin;
         await axios.get('/api/v1',{params: user})
         .then(res => {
-            localStorage.setItem('currentUser', res.data[0].username);
+            localStorage.setItem('currentUser', JSON.stringify(res.data[0]));
             signin = res.data[1];
         }
         ).catch(err => {
