@@ -89,13 +89,13 @@ export default function Timer(props) {
         const actualTime = Date.now() - lastStopPress;
             
         //if-block handles progession of steps. If on last step end the session.
-        if (step < timer.length - 1) {
-            setStep(step + 1);
-        } else if (step == timer.length - 1) {
-            setAlert(true);
-            setTimeout(() => {sendToDashboard()}, 2000)
-            //create of function that sends alert and adds to backend
-        } 
+        // if (step < timer.length - 1) {
+        //     setStep(step + 1);
+        // } else if (step == timer.length - 1) {
+        //     setAlert(true);
+        //     setTimeout(() => {sendToDashboard()}, 2000)
+        //     //create of function that sends alert and adds to backend
+        // } 
 
     }
 
@@ -149,7 +149,7 @@ export default function Timer(props) {
                 
             </div>
             <div className='timer-menu'>
-                <TimerMenu menuList = {timer}/>
+                <TimerMenu setStep = {setStep} menuList = {timer}/>
             </div>
         </div>
         </div>);

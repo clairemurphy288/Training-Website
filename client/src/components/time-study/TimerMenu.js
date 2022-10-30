@@ -4,9 +4,9 @@ import { useState } from "react";
 export default function TimerMenu(props) {
     const list = props.menuList.map((item,index)=> {
         if (index == 0) {
-            return  <MenuItem class="table-secondary" stepName={item.stepName}/>
+            return  <MenuItem class="table-secondary" setStep={props.setStep} index={index} stepName={item.stepName}/>
         } else {
-            return  <MenuItem stepName={item.stepName}/>
+            return  <MenuItem setStep={props.setStep} index={index} stepName={item.stepName}/>
         }
     })
     return(<div class="menu"><table class="table table-light table-hover table-borderless">
@@ -24,6 +24,8 @@ export default function TimerMenu(props) {
 
 function MenuItem(props) {
     function onClick(e) {
+        props.setStep(props.index);
+        
         document.querySelector(".table-secondary").classList.remove("table-secondary");
         e.currentTarget.classList.toggle("table-secondary");
     }
