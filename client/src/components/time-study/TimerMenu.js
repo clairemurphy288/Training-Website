@@ -24,9 +24,12 @@ export default function TimerMenu(props) {
 
 function MenuItem(props) {
     function onClick(e) {
+
+        document.getElementById("start").disabled = false;
+        document.getElementById("pause").disabled = false;
+        //might have to create a counter for step progress
         props.setStep(props.index);
-        
-        document.querySelector(".table-secondary").classList.remove("table-secondary");
+        document.querySelector(".table-secondary").classList.toggle("table-secondary");
         e.currentTarget.classList.toggle("table-secondary");
     }
     return <tr>

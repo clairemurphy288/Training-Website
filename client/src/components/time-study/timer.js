@@ -28,6 +28,7 @@ export default function Timer(props) {
     const title = location.state.timer.title;
 
     const [step, setStep] = useState(0);
+    const [stepCounter, setCounter] = useState(0);
     const [showAlert, setAlert] = useState(false);
 
     const navigate = useNavigate();
@@ -72,6 +73,7 @@ export default function Timer(props) {
         }
     }
     async function stopTimer(e) {
+        setCounter(stepCounter + 1);
         setTimerState(false);
         setDate("00:00:00");
         //increases totalperformed time with the ellpased time recorded on the Timer
@@ -87,15 +89,20 @@ export default function Timer(props) {
         //actuaTime is how long the user really spent on the step. 
         //This is the timer that is running in the background.
         const actualTime = Date.now() - lastStopPress;
+
+        const element = document.querySelector(".table-secondary").classList;
+        // element.toggle("table-secondary");
+        element.add("table-success");
+
+        document.getElementById("start").disabled = true;
+        document.getElementById("pause").disabled = true;
             
-        //if-block handles progession of steps. If on last step end the session.
-        // if (step < timer.length - 1) {
-        //     setStep(step + 1);
-        // } else if (step == timer.length - 1) {
-        //     setAlert(true);
-        //     setTimeout(() => {sendToDashboard()}, 2000)
-        //     //create of function that sends alert and adds to backend
-        // } 
+        // if-block handles progession of steps. If on last step end the session.
+         if (stepCounter == timer.length - 1) {
+            setAlert(true);
+            setTimeout(() => {sendToDashboard()}, 2000)
+            //create of function that sends alert and adds to backend
+        } 
 
     }
 
@@ -149,7 +156,7 @@ export default function Timer(props) {
                 
             </div>
             <div className='timer-menu'>
-                <TimerMenu setStep = {setStep} menuList = {timer}/>
+                <TimerMenu stepCounter={stepCounter} setCounter={setCounter} setStep = {setStep} menuList = {timer}/>
             </div>
         </div>
         </div>);
