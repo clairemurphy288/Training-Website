@@ -20,10 +20,6 @@ export default function Timer(props) {
     const [interval, setNewInt] = useState(0);
     const [deltaTime, setDelta] = useState(0);
 
-    //below are the arrays containing the actualTimes and performed times
-    const [actualTimeArr, setActualTime] = useState([]);
-    const [performedTime, setPerformedTime] = useState([]);
-
     const [pause, setPause] = useState("pause");
     const [start, setTimerState] = useState(false);
     //process utilized for the time study from TimeSelect.js
@@ -95,11 +91,7 @@ export default function Timer(props) {
         //if-block handles progession of steps. If on last step end the session.
         if (step < timer.length - 1) {
             setStep(step + 1);
-            setActualTime([...actualTimeArr, actualTime]);
-            setPerformedTime([...performedTime, deltaTime]);
         } else if (step == timer.length - 1) {
-            setActualTime([...actualTimeArr, actualTime]);
-            setPerformedTime([...performedTime, deltaTime]);
             setAlert(true);
             setTimeout(() => {sendToDashboard()}, 2000)
             //create of function that sends alert and adds to backend
@@ -112,11 +104,11 @@ export default function Timer(props) {
             sendToBackend();
         }
 
-    },[totalTime,showAlert, actualTimeArr, performedTime, totalPerformedTime])
+    },[totalTime,showAlert, totalPerformedTime])
     async function sendToBackend() {
         const user = JSON.parse(localStorage.getItem('currentUser')).username;
             const totalActualTime = Date.now() - totalTime;
-            await axios.post('/api/v1/timer/users', {user: user, title: title, actualTime: actualTimeArr, performedTime: performedTime, performedTotalTime: totalPerformedTime, actualTotalTime: totalActualTime, dateCompleted: new Date()}).then(res => {
+            await axios.post('/api/v1/timer/users', {user: user, title: title, performedTotalTime: totalPerformedTime, actualTotalTime: totalActualTime, dateCompleted: new Date()}).then(res => {
         }).catch(err => console.log(err));
 
     }

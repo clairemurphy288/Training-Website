@@ -7,7 +7,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6000;
 ////not sure what this does
 app.use(cors());
 app.use(express.json());

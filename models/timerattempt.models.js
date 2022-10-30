@@ -8,12 +8,6 @@ const attemptSchema = new Schema({
         type: String,
         default: "",
     },
-    actualTime: {
-        type: Array
-    },
-    performedTime: {
-        type: Array
-    },
     actualTotalTime: {
         type: Number
     },
