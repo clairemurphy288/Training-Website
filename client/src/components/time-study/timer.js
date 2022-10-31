@@ -140,7 +140,7 @@ export default function Timer(props) {
         <div>
             <Navbar/>
             
-            {showAlert? <Alert Title="Well Done" innerText="You have completed this time study! You will be redirected to home page. "/> : false }
+            {showAlert? <Alert color = "success" Title="Well Done" innerText="You have completed this time study! You will be redirected to home page. "/> : false }
         <div className="timer-body">
             <div className="timer-container">
                 <h1>{timer[step].stepName}</h1>

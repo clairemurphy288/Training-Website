@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.min.js';
-import Login from "./components/quiz/login.js";
+import Register from "./components/quiz/register.js";
 import Admin from "./components/admin-page/admin.js"
 import Edit from "./components/admin-page/Edit"
 import UserFeed from './components/admin-page/users/userFeed'
@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/" element = {<Login/>}/>
+      <Route path="/" element = {<Register/>}/>
       <Route path="/admin" element = {<Admin/>}/>
       <Route path='/edit/:query/:page' element={<Edit/>}/>
       <Route path="/user" element={<UserFeed/>}/>

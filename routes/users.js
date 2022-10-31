@@ -50,9 +50,10 @@ router.route('/').get( async(req,res) => {
             });
             //this function saves the users to our database
             await newUser.save();
-            res.send("User added successfullly");
+            const user = await User.findOne({username: req.body.username});
+            res.send(user);
         } catch (err) {
-            res.json('Error' + err);
+            res.json(err);
         }
     });
 
