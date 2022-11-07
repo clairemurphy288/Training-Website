@@ -5,6 +5,12 @@ import axios from 'axios';
 export default function FormTimer(props) {
     const textInput = useRef("");
     const [icon, setIcon] = useState("");
+    const [file, setFile] = useState("");
+
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
 
 
     function onFocus(e) {
@@ -26,6 +32,8 @@ export default function FormTimer(props) {
             <div className='d-flex justify-content-center align-items-center textarea-timer'>
                 <textarea className='form-control' ref = {textInput}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
                 <i onMouseDown = {onDelete} className={icon}></i>
+                <input type="file" onChange={handleChange} />
+                <img src={file} />
             </div>
         </div>
 
