@@ -30,8 +30,6 @@ router.route('/step')
 .get(async (req, res) => {
         //get process
     const process = await Timer.findById({_id: req.query._id});
-    console.log(process)
-    console.log(req.query._id);
     res.send(process.process)
 })
 .post( async (req, res) => {

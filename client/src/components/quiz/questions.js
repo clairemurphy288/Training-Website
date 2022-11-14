@@ -58,7 +58,6 @@ export default function GetQuestions() {
              
     }
     function onLoad() {
-        console.log("triggered");
         navigate("/scores", {state: {score: score, quiz: stateQuiz.quiz.name}})
 
     }

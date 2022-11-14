@@ -42,7 +42,6 @@ export default function GetScores() {
         const data = await axios
         .get("/api/v1/score", {params: { currentUser: localStorage.getItem('currentUser'), score: location.state.score, quiz: location.state.quiz}})
         .then(function(response) {
-            console.log(response.data)
             setData(response.data);
         })
         .catch(function(error) {

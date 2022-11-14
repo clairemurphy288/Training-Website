@@ -6,7 +6,6 @@ let User = require("../models/user.models");
 router.route('/admin').post( async (req,res) => {
     try {
         const title = req.body[1];
-        console.log(title);
         let quiz = req.body[0].fileContent;
         // console.log(JSON.stringify(quiz))
         quiz = quiz.replace(/\n/g, "").trim();
@@ -29,12 +28,10 @@ router.route('/admin').post( async (req,res) => {
         });
         //adds new quiz to database
         await newQuiz.save();
-        console.log("New Quiz Added!");
         res.send("new quiz added!!!!");
 // Adding in the score object for each user associated to this quiz
         const ScoreObject = {title: title, score: 0}
         const users = await User.updateMany({}, {$push: {quizScores: ScoreObject}});
-        console.log(users);
         
     } catch (err) {
         res.json('Error' + err);
@@ -52,7 +49,6 @@ router.route('/admin/quiz').get(async (req,res) => {
 });
 //deletes a quiz from the database
 router.route('/admin/quiz/delete').post(async (req,res) => {
-    console.log(req.body._id);
     await Quiz.deleteOne({_id: new ObjectId(req.body._id)});
     
  
@@ -91,23 +87,19 @@ router.route('/admin/edit/question-delete').post(async (req,res) => {
 });
 //this searches the quiz for a specific question based on the admins query
 router.route('/admin/quiz/query').post(async (req,res) => {
-    console.log(req.body);
     const quizId = new ObjectId(req.body._id);
     const reg = new RegExp(req.body.search, 'i')
     // Fix this query
     const questions = await Quiz.aggregate([{$match: {_id: quizId}}, {$unwind:{path: '$questions'}},
     {$unwind:{path: '$questions.question'}}, {$match: {'questions.question': reg}}, {$project: {_id:0, name:0}}]);
-    console.log(questions)
     res.send(questions);
     
 });
 //this route adds a question to the quiz at index 0
 router.route('/admin/add').post(async (req,res) => {
-    console.log(req.body._id)
     const quiz = new ObjectId(req.body._id);
     const question = req.body.question;
     const value = await Quiz.updateOne({_id: quiz}, {$push:{questions: {$each: [req.body.question], $position:0}}});
-    console.log(value)
 
     res.send("connected to backend");
 });
@@ -119,7 +111,6 @@ router.route('/admin/add-user').post(async (req,res) => {
 });
 
 router.route('/admin/edit-title').post(async (req,res) => {
-    console.log(req.body.name)
     await Quiz.updateOne({_id: new ObjectId(req.body.query)}, {$set: {name: req.body.name}})
     res.send("connected to backend");
 });

@@ -55,7 +55,6 @@ app.get("/api/v1/image", (req,res) => {
 
 app.post("/api/v1/image/:_id", upload.single("testImage"), async (req,res) => {
     const _id = req.params._id;
-    console.log(req.params);
 const val = await Timer.updateOne({'process._id': new ObjectId(_id)},{$set: {"process.$.image":  { data: fs.readFileSync('uploads/' + req.file.filename),
 contentType: "image/png"}}})
     .then((res) => {

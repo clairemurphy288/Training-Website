@@ -14,7 +14,6 @@ router.route('/').get( async(req,res) => {
                 res.send([users, true]);
             } else {
                 console.log('password is incorrect');
-                console.log(users.password);
                 res.send([null, false]);
             }
         } else {
@@ -136,14 +135,12 @@ router.route('/score').get(async(req,res) => {
 });
 
 router.route("/timer/users").post( async (req,res) => {
-    console.log(req.body);
     const Attempt = new TimerAttempt(req.body);
     await Attempt.save();
     res.send("connected to the backend")
 })
 .get(async (req,res) => {
 const sortedAttempts = await TimerAttempt.find({}).sort({dateCompleted: -1});
-    console.log(sortedAttempts);
     
     res.send(sortedAttempts);
 

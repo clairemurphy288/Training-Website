@@ -37,7 +37,6 @@ export default function AddTimer(props) {
     
     const list = process.map((item, index) =>  {
         let base64String;
-        console.log(item)
         if (item.image != undefined) {
 
             base64String = btoa(new Uint8Array(item.image.data.data).reduce(function (data, byte) {
