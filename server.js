@@ -33,19 +33,22 @@ connection.once('open', () => {
 // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 // cb(null, file.fieldname + '-' + uniqueSuffix)
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null,"uploads")
-    },
-    filename: (req, file, cb) => {
-        // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        // cb(null, file.fieldname + '-' + uniqueSuffix)
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
-        cb(null, file.originalname)
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null,"uploads")
+//     },
+//     filename: (req, file, cb) => {
+//         // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+//         // cb(null, file.fieldname + '-' + uniqueSuffix)
 
-const upload = multer({storage: storage});
+//         cb(null, file.originalname)
+//     }
+// });
+
+// const upload = multer({storage: storage});
 
 app.get("/api/v1/image", (req,res) => {
     res.send("postman is working")
@@ -55,7 +58,7 @@ app.get("/api/v1/image", (req,res) => {
 
 app.post("/api/v1/image/:_id", upload.single("testImage"), async (req,res) => {
     const _id = req.params._id;
-const val = await Timer.updateOne({'process._id': new ObjectId(_id)},{$set: {"process.$.image":  { data: fs.readFileSync('uploads/' + req.file.filename),
+const val = await Timer.updateOne({'process._id': new ObjectId(_id)},{$set: {"process.$.image":  { data: req.file.buffer,
 contentType: "image/png"}}})
     .then((res) => {
       console.log("image is saved");
