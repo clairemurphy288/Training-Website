@@ -5,6 +5,9 @@ const Schema = mongoose.Schema;
 const stepSchema = new Schema({
     stepName: {
         type: String
+    }, image : {
+        data: Buffer,
+        contentType: String,
     }
 });
 

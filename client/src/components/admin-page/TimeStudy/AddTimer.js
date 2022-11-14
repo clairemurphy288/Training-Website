@@ -9,7 +9,6 @@ export default function AddTimer(props) {
     const location = useLocation();
     const  timer  = location.state;
     const [process, setProcess] = useState([]);
-    console.log(timer)
 
     useEffect(() => {
         getNewProcess()
@@ -18,7 +17,6 @@ export default function AddTimer(props) {
 
     async function getNewProcess() {
         await axios.get('/api/v1/step', {params: {_id: timer._id}}).then(res => {
-            console.log(res.data)
             setProcess(res.data);
            }).catch(err => console.log(err));
     }
@@ -37,7 +35,14 @@ export default function AddTimer(props) {
         }
     }
     const list = process.map((item, index) =>  {
-        return <FormTimer getNewProcess = {getNewProcess} timerId = {timer._id}  item = {item}  key = {item._id}/>})
+        let base64String;
+        console.log(item)
+        if (item.image != undefined) {
+            base64String = btoa(String.fromCharCode(...new Uint8Array(item.image.data.data)))
+        } else {
+            base64String = "";
+        }
+        return <FormTimer imageSource = {`data:image/png;base64,${base64String}`} getNewProcess = {getNewProcess} timerId = {timer._id}  item = {item}  key = {item._id}/>})
 
     return(
         <div className="container text-center">

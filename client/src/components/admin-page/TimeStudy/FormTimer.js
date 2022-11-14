@@ -7,9 +7,18 @@ export default function FormTimer(props) {
     const [icon, setIcon] = useState("");
     const [file, setFile] = useState("");
 
-    function handleChange(e) {
-        console.log(e.target.files);
+    async function handleChange(e) {
+        console.log(props.item._id);
+        const img = e.target.files[0];
         setFile(URL.createObjectURL(e.target.files[0]));
+        const formData = new FormData();
+        console.log(img);
+        formData.append("testImage", img);
+        //try to send in _id in the params!
+        await axios.post('/api/v1/image/' + props.item._id, formData, {}).then(res => {
+            console.log(res);
+        }).catch(err => console.log(err));
+        //post request to upload file
     }
 
 
@@ -27,13 +36,25 @@ export default function FormTimer(props) {
            }).catch(err => console.log(err));
     }
 
+    //need to figure out how to group icon correctly
+    console.log(props.imageSource);
     return (
         <div className="mb-2">
-            <div className='d-flex justify-content-center align-items-center textarea-timer'>
-                <textarea className='form-control' ref = {textInput}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
-                <i onMouseDown = {onDelete} className={icon}></i>
-                <input type="file" onChange={handleChange} />
-                <img src={file} />
+            <div className='d-flex justify-content-center textarea-timer flex-column'>
+                <div className='d-flex'>
+                    <div className="form-timer">
+                        <div className='add-step'>
+                            <textarea className='form-control' ref = {textInput}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
+                        </div>
+                        <div className='add-photo'>
+                            <input className="mt-2" type="file" onChange={handleChange} />
+                            <img src={props.imageSource} />
+                        </div>
+                    </div>
+                    <div className='delete-timer-form'>
+                        <i onMouseDown = {onDelete} className={icon}></i>
+                    </div>
+                </div>
             </div>
         </div>
 

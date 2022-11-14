@@ -1,7 +1,7 @@
 const router = require('express').Router();
 var ObjectId = require('mongodb').ObjectId; 
 let Timer = require("../models/timer.models");
-let User = require("../models/user.models");
+
 
 router.route('/timer')
 .post( async (req, res) => {
@@ -51,5 +51,6 @@ router.route('/step')
     const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
     res.send("connected to backend")
 });
+
 
 module.exports = router;
