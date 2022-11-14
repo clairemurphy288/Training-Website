@@ -5,14 +5,13 @@ import axios from 'axios';
 export default function FormTimer(props) {
     const textInput = useRef("");
     const [icon, setIcon] = useState("");
-    const [file, setFile] = useState("");
+    const [file, setFile] = useState(props.imageSource);
 
     async function handleChange(e) {
         console.log(props.item._id);
         const img = e.target.files[0];
         setFile(URL.createObjectURL(e.target.files[0]));
         const formData = new FormData();
-        console.log(img);
         formData.append("testImage", img);
         //try to send in _id in the params!
         await axios.post('/api/v1/image/' + props.item._id, formData, {}).then(res => {
@@ -48,7 +47,7 @@ export default function FormTimer(props) {
                         </div>
                         <div className='add-photo'>
                             <input className="mt-2" type="file" onChange={handleChange} />
-                            <img src={props.imageSource} />
+                            <img src={file} />
                         </div>
                     </div>
                     <div className='delete-timer-form'>

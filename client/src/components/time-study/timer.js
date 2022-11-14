@@ -135,10 +135,18 @@ export default function Timer(props) {
       
         return hours + ":" + minutes + ":" + seconds 
       }
+      let base64String = "";
+      if (timer[step].image != undefined) {
+        base64String = btoa(new Uint8Array(timer[step].image.data.data).reduce(function (data, byte) {
+            return data + String.fromCharCode(byte);
+        }, ''));
+        base64String = `data:image/png;base64,${base64String}`
+      }
      
     return (
         <div>
             <Navbar/>
+            <TimerMenu stepCounter={stepCounter} setCounter={setCounter} setStep = {setStep} menuList = {timer}/>
             
             {showAlert? <Alert color = "success" Title="Well Done" innerText="You have completed this time study! You will be redirected to home page. "/> : false }
         <div className="timer-body">
@@ -156,7 +164,7 @@ export default function Timer(props) {
                 
             </div>
             <div className='timer-menu'>
-                <TimerMenu stepCounter={stepCounter} setCounter={setCounter} setStep = {setStep} menuList = {timer}/>
+                <img src={base64String}></img>
             </div>
         </div>
         </div>);

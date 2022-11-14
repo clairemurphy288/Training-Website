@@ -91,7 +91,7 @@ useEffect(() => {
 }, [count]);
 
      const getResponse = async ()=> {
-      await axios.post("/api/v1/edit", {query: query}).then( async (response) => {
+      await axios.post("/api/v1/admin/edit", {query: query}).then( async (response) => {
           let ResData = await response.data;
           setQuiz(ResData)
           })

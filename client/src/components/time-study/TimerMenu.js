@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 export default function TimerMenu(props) {
+    //bar that increments as you go 
     const list = props.menuList.map((item,index)=> {
         if (index == 0) {
             return  <MenuItem class="table-secondary" setStep={props.setStep} index={index} stepName={item.stepName}/>
@@ -13,10 +14,11 @@ export default function TimerMenu(props) {
     <thead>
         <tr>
             <th>Steps</th>
+            {list}
         </tr>
     </thead>
     <tbody>
-       {list}
+
     </tbody>
   </table>
   </div>);
@@ -38,8 +40,7 @@ function MenuItem(props) {
         document.querySelector(".table-secondary").classList.toggle("table-secondary");
         e.currentTarget.classList.toggle("table-secondary");
     }
-    return <tr>
-            <td onClick={onClick} className={props.class}>{props.stepName}</td>
-        </tr>
+    return <td onClick={onClick} className={props.class}>{props.stepName}</td>
+        
 
 }

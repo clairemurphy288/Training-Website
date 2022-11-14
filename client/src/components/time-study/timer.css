@@ -8,8 +8,8 @@
 .timer-container {
     font-family: 'Raleway', sans-serif;
     display: flex;
-    width: 100%;
-    flex: 1 1 70%;
+    /* width: 100%; */
+    flex: 1 1 60%;
     min-height: 50vh;
     justify-content: center;
     align-items: center;
@@ -21,9 +21,10 @@
     margin: 2%;
 }
 .timer-menu {
-  flex: 1 1 30%;
-  max-width: 30ch;
-  margin-right: 4px;
+  flex: 1 1 40%;
+}
+img {
+  max-width: 100%;
 }
 
 /* Timer */
