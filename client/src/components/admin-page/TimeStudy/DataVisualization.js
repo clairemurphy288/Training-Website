@@ -1,6 +1,8 @@
 import NavBar from "../utilities/navbar";
 import axios from "axios";
 import {useState, UseEffect, useEffect} from 'react';
+import BarGraph from "./BarGraph";
+import LineGraph from "./LineGraph";
 
 export default function DataVisualization(props) {
     const [data, setData] = useState([]);
@@ -80,11 +82,12 @@ export default function DataVisualization(props) {
     const list = data.map((object, item) => {
         return (
          <tr>
-            <td>{new Date(object.dateCompleted).toLocaleString()}</td>
+            <td>{new Date(object.dateCompleted).toLocaleDateString()+ " "  + new Date(object.dateCompleted).toLocaleTimeString()}</td>
             <td>{object.title}</td>
             <td>{object.user}</td>
             <td>{object.actualTotalTime/1000}</td>
             <td>{object.performedTotalTime/1000}</td>
+            <td>{Math.round(object.performedTotalTime/object.actualTotalTime * 10000000)/100000}</td>
 
         </tr>);
     });
@@ -99,6 +102,9 @@ export default function DataVisualization(props) {
                     <th>User</th>
                     <th>Actual Time</th>
                     <th>Total Time</th>
+                    <th>% Labor Efficiency</th>
+                    <th>Standard Work</th>
+                    <th>% Production Efficiency</th>
                 </tr>
             </thead>
             <tbody>
@@ -106,7 +112,10 @@ export default function DataVisualization(props) {
             </tbody>
         </table>
         <br></br>
+        <BarGraph data = {data}/>
+        <LineGraph data = {data}/>
         <button onClick={tableToCSV} className="btn btn-warning">download CSV</button>
+
     </div>)
 
 }
