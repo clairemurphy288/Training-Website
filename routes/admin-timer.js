@@ -17,7 +17,7 @@ router.route('/timer')
     await newTimer.save();
     res.send("valid request")
 }).get(async (req,res) => {
-    const val = await Timer.find();;
+    const val = await Timer.find({}, {title: 1, _id: 1});
     res.send(val);
 }).delete( async (req, res) => {
     await Timer.deleteOne({_id: new ObjectId(req.body._id)});

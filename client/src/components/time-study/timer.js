@@ -24,8 +24,8 @@ export default function Timer(props) {
     const [start, setTimerState] = useState(false);
     //process utilized for the time study from TimeSelect.js
     const location = useLocation();
-    const  timer  = location.state.timer.process;
-    const title = location.state.timer.title;
+    const  timer  = location.state.process;
+    const title = location.state.title;
 
     const [step, setStep] = useState(0);
     const [stepCounter, setCounter] = useState(0);
