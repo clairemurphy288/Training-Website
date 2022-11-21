@@ -18,6 +18,8 @@ export default function Register(props) {
     const [passwordVisibility, setPasswordVis] = useState(""); 
     const [alert, setAlert] = useState(false);
 
+    const navigate = useNavigate();
+
     function onChangeUsername(e) {
             setUsername(e.target.value);
     }
@@ -40,7 +42,6 @@ export default function Register(props) {
                     email: email
                 }
                 axios.post('/api/v1',user).then(res => {
-                    console.log(res.data);
                     if (res.data.code == 11000) {
                         setAlert(<Alert color = "danger" Title="Invalid Credentials" innerText="Invalid credentials. Please check your username and password."/> );
 
@@ -48,7 +49,8 @@ export default function Register(props) {
                         setAlert(<Alert color = "warning" Title="Invalid Credentials" innerText={res.data.message}/> );
                     } else {
                         localStorage.setItem('currentUser', res.data );
-                        
+                        setAlert(<Alert color = "success" Title="Welcome" innerText=""/>)
+                        setTimeout(navigate("/dashboard"),1000);
 
                     }
                 }).catch(err => {console.log(err)});

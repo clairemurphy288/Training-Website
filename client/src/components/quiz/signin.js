@@ -3,6 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import './sign-up.css';
+import bcrypt from 'bcryptjs';
 
 export default class Signin extends Component {
 
@@ -45,11 +46,13 @@ export default class Signin extends Component {
         let signin;
         await axios.get('/api/v1',{params: user})
         .then(res => {
-            localStorage.setItem('currentUser', JSON.stringify(res.data[0]));
-            signin = res.data[1];
+            signin = bcrypt.compareSync(this.state.password, res.data.password);
+            console.log(signin);
+            localStorage.setItem('currentUser', JSON.stringify(res.data));
         }
         ).catch(err => {
             if (AxiosError) {
+                console.log(err)
                 alert("Invalid login credentials.")
             } else {
                 alert(err);
