@@ -10,10 +10,13 @@ export default function TimerMenu(props) {
             return  <MenuItem setStep={props.setStep} index={index} stepName={item.stepName}/>
         }
     })
-    return(<div class="menu"><table class="table table-light table-hover table-borderless">
+    return(<div class="menu d-flex">
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-caret-left caret-left" viewBox="0 0 16 16">
+  <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
+</svg>
+        <table class="table table-light table-hover table-borderless">
     <thead>
         <tr>
-            <th>Steps</th>
             {list}
         </tr>
     </thead>
@@ -21,6 +24,9 @@ export default function TimerMenu(props) {
 
     </tbody>
   </table>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-caret-right caret-right" viewBox="0 0 16 16">
+  <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+</svg>
   </div>);
 }
 

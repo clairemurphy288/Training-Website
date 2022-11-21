@@ -83,6 +83,12 @@ img {
   overflow-y: scroll;
   max-height: 80vh;
 }
+.caret-right {
+  cursor: pointer ;
+}
+.caret-left {
+  cursor: pointer;
+}
 /* 
 CSS animations
  */

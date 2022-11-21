@@ -34,6 +34,13 @@ export default function AddTimer(props) {
 
         }
     }
+    async function updateStandardWork(e) {
+        if (e.target.value != timer.standardWork) {
+            await axios.put('/api/v1/standard-work',  {_id: timer._id, standardWork: e.target.value, title: timer.title}).then(res => {
+            }).catch(err => console.log(err));
+
+        }
+    }
     
     const list = process.map((item, index) =>  {
         let base64String;
@@ -54,7 +61,9 @@ export default function AddTimer(props) {
             <NavBar/>
             <label>Title</label>
             <input onBlur={updateTitle} defaultValue={timer.title} className="form-control mb-2"></input>
-            <div>{list}</div>
+            <label>Standard Work Value</label>
+            <input onBlur={updateStandardWork} defaultValue={timer.standardWork} className="form-control mb-2"></input>
+            <div className='mt-4'>{list}</div>
             <button onClick={onClick} className="btn btn-dark mt-2">+</button>
         </div>
     )

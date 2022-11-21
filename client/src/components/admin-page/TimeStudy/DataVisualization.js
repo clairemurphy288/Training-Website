@@ -3,6 +3,7 @@ import axios from "axios";
 import {useState, UseEffect, useEffect} from 'react';
 import BarGraph from "./BarGraph";
 import LineGraph from "./LineGraph";
+import ProductionGraph from "./ProductionEfficiency";
 
 export default function DataVisualization(props) {
     const [data, setData] = useState([]);
@@ -88,12 +89,14 @@ export default function DataVisualization(props) {
             <td>{object.actualTotalTime/1000}</td>
             <td>{object.performedTotalTime/1000}</td>
             <td>{Math.round(object.performedTotalTime/object.actualTotalTime * 10000000)/100000}</td>
+            <td>{object.standardWork}</td>
+            <td>{Math.round(object.performedTotalTime/object.standardWork * 1000)/10000}</td>
 
         </tr>);
     });
     return(<div className="container">
         <NavBar/>
-        <h1>Data Visualization</h1>
+        <h2>Data Visualization</h2>
         <table className="table table-secondary table-striped">
             <thead>
                 <tr>
@@ -111,10 +114,12 @@ export default function DataVisualization(props) {
                 {list}
             </tbody>
         </table>
+        <button onClick={tableToCSV} className="btn btn-warning">download</button>
         <br></br>
         <BarGraph data = {data}/>
         <LineGraph data = {data}/>
-        <button onClick={tableToCSV} className="btn btn-warning">download CSV</button>
+        <ProductionGraph data = {data}/>
+
 
     </div>)
 

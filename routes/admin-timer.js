@@ -1,6 +1,7 @@
 const router = require('express').Router();
 var ObjectId = require('mongodb').ObjectId; 
 let Timer = require("../models/timer.models");
+const TimerAttempt = require('../models/timerattempt.models');
 
 
 router.route('/timer')
@@ -48,6 +49,15 @@ router.route('/step')
     const _id = new ObjectId(req.body._id);
     const val = await Timer.updateOne({_id: timerId}, {$pull : {process: {_id: _id}}});
     res.send("connected to backend")
+});
+
+router.route('/standard-work') 
+.put(async (req,res) => {
+    const val = await Timer.updateOne({_id: new ObjectId(req.body._id)}, {$set: {standardWork: req.body.standardWork}});
+    const u = await TimerAttempt.updateMany({title: req.body.title}, {$set:{standardWork: req.body.standardWork}});
+    console.log(u);
+
+    res.send("connected to backend");
 });
 
 

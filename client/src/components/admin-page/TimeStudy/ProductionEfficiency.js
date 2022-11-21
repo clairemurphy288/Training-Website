@@ -22,7 +22,7 @@ ChartJS.register(
 );
 
 
-export default function LineGraph(props) {
+export default function ProductionGraph(props) {
 
 const options = {
     responsive: true,
@@ -31,7 +31,7 @@ const options = {
       },
       title: {
         display: true,
-        text: 'Overall % Labor Productivity',
+        text: 'Overall % Production Productivity',
       },
     },
   };
@@ -44,7 +44,7 @@ const options = {
     datasets: [
       {
         label: '% Labor Productivity',
-        data: labels.map((o, index) => Math.round(props.data[index].performedTotalTime/props.data[index].actualTotalTime * 10000000)/100000 ),
+        data: labels.map((o, index) => Math.round(props.data[index].performedTotalTime/props.data[index].standardWork * 100)/1000 ),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },

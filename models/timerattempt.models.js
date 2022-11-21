@@ -17,6 +17,10 @@ const attemptSchema = new Schema({
         type: Date
     }, user: {
         type: String
+    },
+    standardWork: {
+        type: Number,
+        default: 1
     }
 });
 

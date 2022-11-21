@@ -26,3 +26,7 @@
     color:black;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.admin-photo {
+    max-width: 80vh;
+}

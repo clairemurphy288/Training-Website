@@ -16,6 +16,11 @@ const timerSchema = new Schema({
         type: String,
         default: "",
     },
+    standardWork: {
+        type: Number,
+        default: 1
+    },
+
     process: {
         type: [stepSchema]
     },

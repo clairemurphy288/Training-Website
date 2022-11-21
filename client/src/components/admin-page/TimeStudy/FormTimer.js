@@ -8,14 +8,12 @@ export default function FormTimer(props) {
     const [file, setFile] = useState(props.imageSource);
 
     async function handleChange(e) {
-        console.log(props.item._id);
         const img = e.target.files[0];
         setFile(URL.createObjectURL(e.target.files[0]));
         const formData = new FormData();
         formData.append("testImage", img);
         //try to send in _id in the params!
         await axios.post('/api/v1/image/' + props.item._id, formData, {}).then(res => {
-            console.log(res);
         }).catch(err => console.log(err));
         //post request to upload file
     }
@@ -34,27 +32,20 @@ export default function FormTimer(props) {
         await axios.put('/api/v1/step',  {_id: props.item._id, text: textInput.current.value}).then(res => {
            }).catch(err => console.log(err));
     }
-
-    //need to figure out how to group icon correctly
-    console.log(props.imageSource);
     return (
         <div className="mb-2">
-            <div className='d-flex justify-content-center textarea-timer flex-column'>
-                <div className='d-flex'>
                     <div className="form-timer">
                         <div className='add-step'>
                             <textarea className='form-control' ref = {textInput}  defaultValue = {props.item.stepName} onBlur={(onBlur)} onFocus={(onFocus)}></textarea>
                         </div>
+                        <div className='delete-timer-form'>
+                            <i onMouseDown = {onDelete} className={icon}></i>
+                        </div>
                         <div className='add-photo'>
                             <input className="mt-2" type="file" onChange={handleChange} />
-                            <img src={file} />
+                            <img className='admin-photo' src={file} />
                         </div>
                     </div>
-                    <div className='delete-timer-form'>
-                        <i onMouseDown = {onDelete} className={icon}></i>
-                    </div>
-                </div>
-            </div>
         </div>
 
     );
