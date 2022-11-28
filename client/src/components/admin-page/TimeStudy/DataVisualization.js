@@ -7,9 +7,11 @@ import ProductionGraph from "./ProductionEfficiency";
 
 export default function DataVisualization(props) {
     const [data, setData] = useState([]);
+    const [dropDownList, setDropDown] = useState([]);
 
     useEffect(()=> {
         getData();
+        getTimers();
 
     },[])
 
@@ -20,6 +22,17 @@ export default function DataVisualization(props) {
     
 
     }
+
+
+    async function getTimers() {
+        await axios.get("/api/v1/timer").then(function (res) {
+            setDropDown(res.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+    }
+
 
     function tableToCSV() {
  
@@ -54,6 +67,21 @@ export default function DataVisualization(props) {
 
     }
 
+    function dropChange(e) {
+        const newTitle = e.target.value;
+        //filter data 
+        const filterArray = data.filter(object => {
+            if (object.title == newTitle) {
+                return object;
+            }
+        });
+        if (newTitle == "Analyze all timers") {
+            getData();
+        } else {
+            setData(filterArray);
+        }
+    }
+
     function downloadCSVFile(csv_data) {
 
         // Create CSV file object and feed
@@ -80,6 +108,14 @@ export default function DataVisualization(props) {
         temp_link.click();
         document.body.removeChild(temp_link);
     }
+
+
+    const dropList = dropDownList.map((object, index) => {
+        if (index == 0 ) {
+            return (<option value="Analyze all timers">Analyze all timers</option>)
+        }
+        return(<option value={object.title}>{object.title}</option>);
+    })
     const list = data.map((object, item) => {
         return (
          <tr>
@@ -116,6 +152,14 @@ export default function DataVisualization(props) {
         </table>
         <button onClick={tableToCSV} className="btn btn-warning">download</button>
         <br></br>
+
+        <select onChange={dropChange} class="form-select form-select-lg mt-2 mb-3" aria-label=".form-select-lg example">
+            {dropList}
+        </select>
+
+
+   
+
         <BarGraph data = {data}/>
         <LineGraph data = {data}/>
         <ProductionGraph data = {data}/>
